@@ -5,6 +5,7 @@ typedef void* ArvB;
 typedef void* No;
 typedef void* Item;
 
+ArvB criaArvore();
 void inserirEsquerda(No *no, int valor);
 void inserirDireita(No *no, int valor);
 void inserir(ArvB *arv, Item info);

@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "arvore.h"
+#include "figuras.h"
+#include "geo.h"
+#include "parametros.h"
 
 int main (int argc, char* argv[]) {
 
@@ -56,7 +60,9 @@ int main (int argc, char* argv[]) {
     }
 
     // criar árvore
+    ArvB arvore = criaArvore();
     // chamar a função de interpretar o geo
+
 
     return 0;
 }

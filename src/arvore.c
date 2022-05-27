@@ -11,6 +11,14 @@ typedef struct {
     int tam;
 } ArvB;
 
+ArvB criaArvore() {
+    ArvB arvore;
+    arvore = (ArvB*) malloc(sizeof(ArvB));
+    arvore->raiz = NULL;
+    arvore->tamanho = 0;
+
+    return(arvore);
+}
 
 // procedimento para inserir um elemento na subárvore esquerda
 void inserirEsquerda(No *no, int valor) {
