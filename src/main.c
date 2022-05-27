@@ -1,178 +1,62 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-// estrututa nó
-typedef struct no {
-    int conteudo;
-    struct no *esquerda, *direita;
-} No;
+int main (int argc, char* argv[]) {
 
-// estrutura árvore com um ponteiro para um nó
-typedef struct {
-    No *raiz;
-    int tam;
-} ArvB;
+    char* dirEntrada = NULL;
+    char* arqGeo = NULL;
+    char* arqQry = NULL;
+    char* dirSaida = NULL;
 
-/*  Assinatura do procedimento inserirDireita()
-    necessário pois é utilizado no procedimento inserirEsquerda,
-    antes deste ser criado
-*/
-void inserirDireita(No *no, int valor);
+    int i=0;
+    while(i<argc) {
 
-// procedimento para inserir um elemento na subárvore esquerda
-void inserirEsquerda(No *no, int valor) {
-    if(no->esquerda == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        no->esquerda = novo;
-    } else {
-        if(valor < no->esquerda->conteudo)
-            inserirEsquerda(no->esquerda, valor);
-        if(valor > no->esquerda->conteudo)
-            inserirDireita(no->esquerda, valor);
+        if(strcmp("-e", argv[i]) == 0) { // diretorio de entrada (opcional)
+
+            ++i; // a proxima string vai ser o caminho para o diretorio da base de entrada
+            dirEntrada = (char*)malloc((strlen(argv[i])+5)*sizeof(char));
+            strcpy(dirEntrada, argv[i]);
+
+        } else if(strcmp("-f", argv[i]) == 0) { // arquivo geo (obrigatorio)
+
+            ++i;
+            arqGeo = (char*)malloc(sizeof(char) * (strlen(argv[i])+5));
+            strcpy(arqGeo, argv[i]);
+
+        } else if(strcmp("-q", argv[i]) == 0) { // arquivo qry (opcional)
+
+            ++i;
+            arqQry = (char*)malloc(sizeof(char) * (strlen(argv[i])+5));
+            strcpy(arqQry, argv[i]);
+
+        } else if(strcmp("-o", argv[i]) == 0) { // diretorio saida (obrigatorio)
+
+            ++i;
+            dirSaida = (char*)malloc((strlen(argv[i])+5)*sizeof(char));
+            strcpy(dirSaida, argv[i]);
+
+        } 
+        i++;
     }
-}
 
-// procedimento para inserir um elemento na subárvore direita
-void inserirDireita(No *no, int valor) {
-    if(no->direita == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        no->direita = novo;
-    } else {
-        if(valor > no->direita->conteudo)
-            inserirDireita(no->direita, valor);
-        if(valor < no->direita->conteudo)
-            inserirEsquerda(no->direita, valor);
+    // ---------------------------------------- GEO ------------------------------------------------------------
+
+    // tratamento do diretorio de entrada geo
+    char* diretorioEntradaGeo = NULL;
+    diretorioEntradaGeo = (char*)malloc(sizeof(char) * (strlen(diretorioEnt) + strlen(nomeGeo)+2));
+    diretorios(diretorioEnt, nomeGeo, diretorioEntradaGeo);
+    printf("\ndiretorioEntradaGeo: %s\n", diretorioEntradaGeo);
+
+    // criando o arquivo geo a partir do diretorio de entrada
+    FILE *geoFile;
+    geoFile = fopen(diretorioEntradaGeo, "r");
+    if(geoFile == NULL) {
+        printf("\nNao foi possivel abrir o arquivo geo.");
     }
-}
 
-/*
-    Procedimento para inserir um elemento na árvore
-    faz uso dos dois procedimentos anteriores,
-    inserindo à esquerda ou à direita
-*/
-void inserir(ArvB *arv, int valor) {
-    if(arv->raiz == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        arv->raiz = novo;
-    } else {
-        if(valor < arv->raiz->conteudo)
-            inserirEsquerda(arv->raiz, valor);
-        if(valor > arv->raiz->conteudo)
-            inserirDireita(arv->raiz, valor);
-    }
-}
+    // criar árvore
+    // chamar a função de interpretar o geo
 
-/*  nova versão para a inserção, mais resumida
-    perceba que agora é uma função
-*/
-No* inserirNovaVersao(No *raiz, int valor) {
-    if(raiz == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        return novo;
-    } else {
-        if(valor < raiz->conteudo)
-            raiz->esquerda = inserirNovaVersao(raiz->esquerda, valor);
-        if(valor > raiz->conteudo)
-            raiz->direita = inserirNovaVersao(raiz->direita, valor);
-        return raiz;
-    }
-}
-
-// função que retorna o tamanho de uma árvore
-int tamanho(No *raiz) {
-    if(raiz == NULL)
-        return 0;
-    else
-        return 1 + tamanho(raiz->esquerda) + tamanho(raiz->direita);
-}
-
-// função para buscar um elemento na árvore
-int buscar(No *raiz, int chave) {
-    if(raiz == NULL) {
-        return 0;
-    } else {
-        if(raiz->conteudo == chave)
-            return 1;
-        else {
-            if(chave < raiz->conteudo)
-                return buscar(raiz->esquerda, chave);
-            else
-                return buscar(raiz->direita, chave);
-        }
-    }
-}
-/*  faz a impressão da árvore em ordem crescente
-    esquerda - raiz - direita
-*/
-/*void imprimir(No *raiz) {
-    if(raiz != NULL) {
-        imprimir(raiz->esquerda);
-        printf("%d ", raiz->conteudo);
-        imprimir(raiz->direita);
-    }
-}*/
-
-// função para a remoção de um nó
-No* remover(No *raiz, int chave) {
-    if(raiz == NULL) {
-        printf("Valor nao encontrado!\n");
-        return NULL;
-    } else {
-        if(raiz->conteudo == chave) {
-            // remove nós folhas (nós sem filhos)
-            if(raiz->esquerda == NULL && raiz->direita == NULL) {
-                free(raiz);
-                return NULL;
-            }
-            else{
-                // remover nós que possuem apenas 1 filho
-                if(raiz->esquerda == NULL || raiz->direita == NULL){
-                    No *aux;
-                    if(raiz->esquerda != NULL)
-                        aux = raiz->esquerda;
-                    else
-                        aux = raiz->direita;
-                    free(raiz);
-                    return aux;
-                }
-                else{
-                    No *aux = raiz->esquerda;
-                    while(aux->direita != NULL)
-                        aux = aux->direita;
-                    raiz->conteudo = aux->conteudo;
-                    aux->conteudo = chave;
-                    raiz->esquerda = remover(raiz->esquerda, chave);
-                    return raiz;
-                }
-            }
-        } else {
-            if(chave < raiz->conteudo)
-                raiz->esquerda = remover(raiz->esquerda, chave);
-            else
-                raiz->direita = remover(raiz->direita, chave);
-            return raiz;
-        }
-    }
-}
-
-// ffunção principal
-int main() {
-    int op, valor;
-    ArvB arv;
-    arv.raiz = NULL;
-
-    No *raiz = NULL;
-
+    return 0;
 }
