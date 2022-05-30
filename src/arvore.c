@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "arvore.h"
 
 // estrutura nó
 typedef struct no {
@@ -8,91 +11,64 @@ typedef struct no {
 // estrutura árvore com um ponteiro para um nó
 typedef struct {
     No *raiz;
-    int tam;
-} ArvB;
+    int tamanho;
+} Tree;
 
 ArvB criaArvore() {
-    ArvB arvore;
-    arvore = (ArvB*) malloc(sizeof(ArvB));
+    Tree *arvore;
+    arvore = (Tree*) malloc(sizeof(Tree));
     arvore->raiz = NULL;
     arvore->tamanho = 0;
 
     return(arvore);
 }
 
-// procedimento para inserir um elemento na subárvore esquerda
-void inserirEsquerda(No *no, int valor) {
-    if(no->esquerda == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        no->esquerda = novo;
-    } else {
-        if(valor < no->esquerda->conteudo)
-            inserirEsquerda(no->esquerda, valor);
-        if(valor > no->esquerda->conteudo)
-            inserirDireita(no->esquerda, valor);
-    }
+Node getRaiz(ArvB T) {
+    Tree* arvore = (Tree*) T;
+    return arvore->raiz;
 }
 
-// procedimento para inserir um elemento na subárvore direita
-void inserirDireita(No *no, int valor) {
-    if(no->direita == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        no->direita = novo;
-    } else {
-        if(valor > no->direita->conteudo)
-            inserirDireita(no->direita, valor);
-        if(valor < no->direita->conteudo)
-            inserirEsquerda(no->direita, valor);
-    }
+Item getItem(Node N) {
+    No* no = (No*) N;
+    return no->conteudo;
 }
 
-/*
-    Procedimento para inserir um elemento na árvore
-    faz uso dos dois procedimentos anteriores,
-    inserindo à esquerda ou à direita
-*/
-void inserir(ArvB *arv, Item info) {
-    if(arv->raiz == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = info;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        arv->raiz = novo;
-    } else {
-        if(info < arv->raiz->conteudo)
-            inserirEsquerda(arv->raiz, info);
-        if(info > arv->raiz->conteudo)
-            inserirDireita(arv->raiz, info);
-    }
+Node getEsquerda(Node N) {
+    No* no = (No*) N;
+    return no->esquerda;
+}
+
+Node getDireita(Node N) {
+    No* no = (No*) N;
+    return no->direita;
 }
 
 /*  nova versão para a inserção, mais resumida
     perceba que agora é só uma função
 */
-No* inserirNovaVersao(No *raiz, int valor) {
+Node inserir(ArvB T, Node N, Item info) {
+    No* raiz = (No*) N;
+    Tree* tree = (Tree*) T;
     if(raiz == NULL) {
         No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
+        novo->conteudo = info;
         novo->esquerda = NULL;
         novo->direita = NULL;
+        if(tree->raiz == NULL)
+            tree->raiz = novo;
         return novo;
     } else {
-        if(valor < raiz->conteudo)
-            raiz->esquerda = inserirNovaVersao(raiz->esquerda, valor);
-        if(valor > raiz->conteudo)
-            raiz->direita = inserirNovaVersao(raiz->direita, valor);
+        if(info < raiz->conteudo)
+            raiz->esquerda = inserir(T, raiz->esquerda, info);
+        if(info > raiz->conteudo)
+            raiz->direita = inserir(T, raiz->direita, info);
         return raiz;
     }
 }
 
 // função que retorna o tamanho de uma árvore
-int tamanho(No *raiz) {
+int tamanho(Node N) {
+    No* raiz = (No*) N;
     if(raiz == NULL)
         return 0;
     else
@@ -100,19 +76,20 @@ int tamanho(No *raiz) {
 }
 
 // função para buscar um elemento na árvore
-int buscar(No *raiz, float chave) {
+Item buscar(Node N, Item info) {
+    No* raiz = (No*) N;
     if(raiz == NULL) {
         return 0;
         //return NULL;
     } else {
-        if(raiz->conteudo == chave)
-            return 1;
+        if(raiz->conteudo == info)
+            return raiz->conteudo;
             //return raiz->conteudo;
         else {
-            if(chave < raiz->conteudo)
-                return buscar(raiz->esquerda, chave);
+            if(info < raiz->conteudo)
+                return buscar(raiz->esquerda, info);
             else
-                return buscar(raiz->direita, chave);
+                return buscar(raiz->direita, info);
         }
     }
 }
@@ -120,27 +97,28 @@ int buscar(No *raiz, float chave) {
 /*  faz a impressão da árvore em ordem crescente
     esquerda - raiz - direita
 */
-void imprimir(No *raiz) {
+void imprimir(Node N) {
+    No* raiz = (No*) N;
     if(raiz != NULL) {
         imprimir(raiz->esquerda);
-        printf("%d ", raiz->conteudo);
+        //printf("%d ", raiz->conteudo);
+        printf("\noba");
         imprimir(raiz->direita);
     }
 }
 
 // função para a remoção de um nó
-No* remover(No *raiz, int chave) {
-
+Node remover(Node N, Item info) {
+    No* raiz = (No*) N;
     // 3 casos de remoção:
     // 1º : quando o nó que desejo remover é folha (não possui filhos);
     // 2º : quando o nó que desejo remover tem 1 filho (esquerda ou direita);
     // 3º : quando o nó que desejo remover tem os 2 filhos (caso mais difícil).
-    
     if(raiz == NULL) {
         printf("Valor nao encontrado!\n");
         return NULL;
     } else {
-        if(raiz->conteudo == chave) {
+        if(raiz->conteudo == info) {
             // remove nós folhas (nós sem filhos)
             if(raiz->esquerda == NULL && raiz->direita == NULL) {
                 free(raiz);
@@ -162,17 +140,74 @@ No* remover(No *raiz, int chave) {
                     while(aux->direita != NULL)
                         aux = aux->direita;
                     raiz->conteudo = aux->conteudo;
-                    aux->conteudo = chave;
-                    raiz->esquerda = remover(raiz->esquerda, chave);
+                    aux->conteudo = info;
+                    raiz->esquerda = remover(raiz->esquerda, info);
                     return raiz;
                 }
             }
         } else {
-            if(chave < raiz->conteudo)
-                raiz->esquerda = remover(raiz->esquerda, chave);
+            if(info < raiz->conteudo)
+                raiz->esquerda = remover(raiz->esquerda, info);
             else
-                raiz->direita = remover(raiz->direita, chave);
+                raiz->direita = remover(raiz->direita, info);
             return raiz;
         }
     }
 }
+
+/* 
+// procedimento para inserir um elemento na subárvore esquerda
+void inserirEsquerda(Node N, int valor) {
+    No* no = (No*) N;
+    if(no->esquerda == NULL) {
+        No *novo = (No*)malloc(sizeof(No));
+        novo->conteudo = valor;
+        novo->esquerda = NULL;
+        novo->direita = NULL;
+        no->esquerda = novo;
+    } else {
+        if(valor < no->esquerda->conteudo)
+            inserirEsquerda(no->esquerda, valor);
+        if(valor > no->esquerda->conteudo)
+            inserirDireita(no->esquerda, valor);
+    }
+}
+
+// procedimento para inserir um elemento na subárvore direita
+void inserirDireita(Node N, int valor) {
+    No* no = (No*) N;
+    if(no->direita == NULL) {
+        No *novo = (No*)malloc(sizeof(No));
+        novo->conteudo = valor;
+        novo->esquerda = NULL;
+        novo->direita = NULL;
+        no->direita = novo;
+    } else {
+        if(valor > no->direita->conteudo)
+            inserirDireita(no->direita, valor);
+        if(valor < no->direita->conteudo)
+            inserirEsquerda(no->direita, valor);
+    }
+}
+
+
+    Procedimento para inserir um elemento na árvore
+    faz uso dos dois procedimentos anteriores,
+    inserindo à esquerda ou à direita
+
+void inserir(ArvB A, Item info) {
+    Tree* arv = (Tree*) A;
+    if(arv->raiz == NULL) {
+        No *novo = (No*)malloc(sizeof(No));
+        novo->conteudo = info;
+        novo->esquerda = NULL;
+        novo->direita = NULL;
+        arv->raiz = novo;
+    } else {
+        if(info < arv->raiz->conteudo)
+            inserirEsquerda(arv->raiz, info);
+        if(info > arv->raiz->conteudo)
+            inserirDireita(arv->raiz, info);
+    }
+}
+ */

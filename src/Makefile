@@ -1,6 +1,6 @@
 LINK_TARGET = ted
 
-OBJECTS = main.o parametros.o geo.o arvore.o
+OBJECTS = main.o parametros.o arvore.o geo.o figuras.o svg.o
 
 # Make Macro defined by 3 macro expansions
 REBUILDABLES = $(OBJECTS)
@@ -9,10 +9,12 @@ all: $(LINK_TARGET)
 	echo All done
 
 # Dependencies
-main.o: parametros.h figuras.h lista.h geo.h svg.h qry.h
+main.o: parametros.h figuras.h arvore.h geo.h svg.h #qry.h
 parametros.o: parametros.h
 arvore.o: arvore.h
-geo.o: geo.h figuras.h lista.h
+geo.o: geo.h figuras.h arvore.h
+figuras.o: figuras.h
+svg.o: svg.h figuras.h arvore.h
 
 $(LINK_TARGET): $(OBJECTS) 
 # $@ expands to the rule's target (LINK_TARGET)

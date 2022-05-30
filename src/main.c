@@ -5,6 +5,7 @@
 #include "figuras.h"
 #include "geo.h"
 #include "parametros.h"
+#include "svg.h"
 
 int main (int argc, char* argv[]) {
 
@@ -13,7 +14,14 @@ int main (int argc, char* argv[]) {
     char* arqQry = NULL;
     char* dirSaida = NULL;
 
-    int i=0;
+    printf("iniciando o for\n");
+    int i;
+    for(i=0; i<argc; i++) {
+        printf("i = %d ", i);
+        printf("%s\n", argv[i]);
+    }
+
+    i=0;
     while(i<argc) {
 
         if(strcmp("-e", argv[i]) == 0) { // diretorio de entrada (opcional)
@@ -48,21 +56,40 @@ int main (int argc, char* argv[]) {
 
     // tratamento do diretorio de entrada geo
     char* diretorioEntradaGeo = NULL;
-    diretorioEntradaGeo = (char*)malloc(sizeof(char) * (strlen(diretorioEnt) + strlen(nomeGeo)+2));
-    diretorios(diretorioEnt, nomeGeo, diretorioEntradaGeo);
+    diretorioEntradaGeo = (char*)malloc(sizeof(char) * (strlen(dirEntrada) + strlen(arqGeo)+2));
+    diretorios(dirEntrada, arqGeo, diretorioEntradaGeo);
     printf("\ndiretorioEntradaGeo: %s\n", diretorioEntradaGeo);
 
     // criando o arquivo geo a partir do diretorio de entrada
     FILE *geoFile;
     geoFile = fopen(diretorioEntradaGeo, "r");
     if(geoFile == NULL) {
-        printf("\nNao foi possivel abrir o arquivo geo.");
+        printf("Nao foi possivel abrir o arquivo geo.\n");
     }
 
     // criar árvore
     ArvB arvore = criaArvore();
     // chamar a função de interpretar o geo
+    interpretandoGeo(geoFile, arvore);
 
 
+    // diretorio de saida do svg inicial (apenas do .geo, antes do .qry)
+    char* diretorioSvgInicial = NULL;
+    diretorioSvgInicial = calloc(strlen(dirSaida) + strlen(arqGeo) + 20, sizeof(char));
+    concatenarSvg(dirSaida, arqGeo, diretorioSvgInicial);
+    printf("diretorioSvgInicial: %s\n", diretorioSvgInicial);
+
+    // criando o arquivo svg inicial 
+    FILE *svgInicial = fopen(diretorioSvgInicial, "w+");
+    if(svgInicial == NULL) {
+        printf("\nNao foi possivel abrir o svg inicial.");
+    }
+    fprintf(svgInicial, "<svg>");
+    createSvg(svgInicial, arvore);  // insere as figuras que estão na lista no arquivo svg inicial
+    fprintf(svgInicial, "\n<svg/>");
+
+    printf("fim da main\n");
+
+    fclose(svgInicial);
     return 0;
 }
