@@ -43,7 +43,7 @@ float getYponto(Ponto Pnt) {
     return(pt->y); 
 }
 
-Figura criarFig(char tipo[],char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
+Figura criarFig(char tipo[], char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
 
     figura* fig = (figura*)malloc(sizeof(figura));
 

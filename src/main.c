@@ -86,7 +86,7 @@ int main (int argc, char* argv[]) {
     }
     fprintf(svgInicial, "<svg>");
     createSvg(svgInicial, arvore);  // insere as figuras que estão na lista no arquivo svg inicial
-    fprintf(svgInicial, "\n<svg/>");
+    fprintf(svgInicial, "\n</svg>");
 
     printf("fim da main\n");
 

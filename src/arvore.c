@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "arvore.h"
+#include "figuras.h"
 
 // estrutura nó
 typedef struct no {
     Item conteudo;
-    struct no *esquerda, *direita;
+    struct no *esquerda, *meio, *direita;
 } No;
 
 // estrutura árvore com um ponteiro para um nó
@@ -43,6 +45,11 @@ Node getDireita(Node N) {
     return no->direita;
 }
 
+Node getMeio(Node N) {
+    No* no = (No*) N;
+    return no->meio;
+}
+
 /*  nova versão para a inserção, mais resumida
     perceba que agora é só uma função
 */
@@ -54,13 +61,25 @@ Node inserir(ArvB T, Node N, Item info) {
         novo->conteudo = info;
         novo->esquerda = NULL;
         novo->direita = NULL;
+        novo->meio = NULL;
         if(tree->raiz == NULL)
             tree->raiz = novo;
         return novo;
-    } else {
-        if(info < raiz->conteudo)
+    } else if (strcmp(getTipo(raiz->conteudo), "t") == 0) {
+        //if(info < raiz->conteudo)
+        if(getX1(info) < getX1(raiz->conteudo))                   // se x1 < x insere na esquerda
             raiz->esquerda = inserir(T, raiz->esquerda, info);
-        if(info > raiz->conteudo)
+        else if(getY1(info) < getY1(raiz->conteudo))              // se x1 >= x e y1 < y insere no meio
+            raiz->meio = inserir(T, raiz->meio, info);
+        else                                                    // se x1 >= x e y1 >= y insere na direita
+            raiz->direita = inserir(T, raiz->direita, info);
+        return raiz;
+    } else {
+        if(getX(info) < getX(raiz->conteudo))                   // se x1 < x insere na esquerda
+            raiz->esquerda = inserir(T, raiz->esquerda, info);
+        else if(getY(info) < getY(raiz->conteudo))              // se x1 >= x e y1 < y insere no meio
+            raiz->meio = inserir(T, raiz->meio, info);
+        else                                                    // se x1 >= x e y1 >= y insere na direita
             raiz->direita = inserir(T, raiz->direita, info);
         return raiz;
     }
@@ -72,7 +91,7 @@ int tamanho(Node N) {
     if(raiz == NULL)
         return 0;
     else
-        return 1 + tamanho(raiz->esquerda) + tamanho(raiz->direita);
+        return 1 + tamanho(raiz->esquerda) + tamanho(raiz->meio) + tamanho(raiz->direita);
 }
 
 // função para buscar um elemento na árvore
@@ -86,8 +105,10 @@ Item buscar(Node N, Item info) {
             return raiz->conteudo;
             //return raiz->conteudo;
         else {
-            if(info < raiz->conteudo)
+            if(getX(info) < getX(raiz->conteudo)) 
                 return buscar(raiz->esquerda, info);
+            else if(getY(info) < getY(raiz->conteudo))
+                return buscar(raiz->meio, info);
             else
                 return buscar(raiz->direita, info);
         }
@@ -103,6 +124,7 @@ void imprimir(Node N) {
         imprimir(raiz->esquerda);
         //printf("%d ", raiz->conteudo);
         printf("\noba");
+        imprimir(raiz->meio);
         imprimir(raiz->direita);
     }
 }
