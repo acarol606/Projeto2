@@ -25,124 +25,35 @@ void diretorios(char* diretorio, char* arquivoGeo, char* arqCompleto) { //tratam
     }
 }
 
-void concatenarSvg(char* diretorio, char* arquivoGeo, char* arqCompleto) {
+void concatenarSvg(char* dirSvg, char* arqQry, int leuQry) {
 
-    char *nomeSvg;
-    nomeSvg = strtok(arquivoGeo, ".");
-
-    if (diretorio[strlen(diretorio)-1] == '/' || arquivoGeo[0] == '/') {
-
-        if(diretorio[strlen(diretorio)-1] == '/' && arquivoGeo[0] == '/') {
-
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, ".");
-            strcat(arqCompleto, nomeSvg);
-            strcat(arqCompleto, ".svg");
-        } else {
-
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeSvg);
-            strcat(arqCompleto, ".svg");
-        }
+    //saidas/esquadra-alet-25-001.qry
+    if (leuQry == 1) {
+        strtok(dirSvg, ".");
+        strcat(dirSvg, ".svg");
     } else {
-
-        strcat(arqCompleto, diretorio);
-        strcat(arqCompleto, "/");
-        strcat(arqCompleto, nomeSvg);
-        strcat(arqCompleto, ".svg");
+        char* nomeQry = getNomeQry(arqQry);
+        strtok(dirSvg, ".");
+        strcat(dirSvg, "-");
+        strcat(dirSvg, nomeQry);
+        strcat(dirSvg, ".svg");
     }
+
 }
 
-void concatenarSvgFinal(char* diretorio, char* arquivoGeo, char* arquivoQry, char* arqCompleto, char* tipoArquivo) {
+void concatenarTxt(char* dirTxt, char* dirSvg) {
 
-    char *nomeGeo;
-    nomeGeo = strtok(arquivoGeo, ".");
+    strcat(dirTxt, dirSvg);
+    strtok(dirTxt, ".");
+    strcat(dirTxt, ".txt");
 
-    char *nomeQry;
-    nomeQry = strtok(arquivoQry, ".");
-
-    if(diretorio[strlen(diretorio)-1] == '/' && arquivoQry[0] == '/') {
-        if(arquivoGeo[0] == '/') {
-            removeChar(nomeQry, '/');
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, ".");
-            strcat(arqCompleto, nomeGeo);   // nomeGeo é a apsta em que o arquivo qry está
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            strcat(arqCompleto, ".svg");
-        } else {
-            removeChar(nomeQry, '/');
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeGeo);   // nomeGeo é a apsta em que o arquivo qry está
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            strcat(arqCompleto, ".svg");
-        }         
-    } else if(diretorio[strlen(diretorio)-1] == '/' && arquivoQry[0] != '/') {
-        if (arquivoGeo[0] == '/') {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, ".");
-            strcat(arqCompleto, nomeGeo);   // nomeGeo é a apsta em que o arquivo qry está
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            strcat(arqCompleto, ".svg");
-        } else {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            strcat(arqCompleto, ".svg");
-        }
-
-    } else if(diretorio[strlen(diretorio)-1] != '/' && arquivoQry[0] == '/') {
-
-        if (arquivoGeo[0] == '/') {
-            removeChar(nomeQry, '/');
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            strcat(arqCompleto, ".svg");
-        } else {
-            removeChar(nomeQry, '/');
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            strcat(arqCompleto, ".svg");
-        }
-
-    } else if(diretorio[strlen(diretorio)-1] != '/' && arquivoQry[0] != '/') {
-        if (arquivoGeo[0] == '/') {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            if(tipoArquivo[0] == 's') {
-                strcat(arqCompleto, ".svg");
-            } else if (tipoArquivo[0] == 't') {
-                strcat(arqCompleto, ".txt"); }
-        } else {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "-");
-            strcat(arqCompleto, nomeQry);
-            if(tipoArquivo[0] == 's') {
-                strcat(arqCompleto, ".svg");
-            } else {
-                strcat(arqCompleto, ".txt"); }
-        }
-    }
 }
 
-void removeChar(char *str, char garbage) {
+char* getNomeQry(char* arquivoQry) {
 
-    char *source, *destiny;
-    for (source = destiny = str; *source != '\0'; source++) {
-        *destiny = *source;
-        if (*destiny != garbage) destiny++;
-    }
-    *destiny = '\0';
+    char* nomeQry = strrchr(arquivoQry, '/'); 
+    nomeQry++;
+    nomeQry = strtok(nomeQry, ".");
+    return nomeQry;
+
 }
