@@ -53,65 +53,6 @@ void concatenarSvg(char* diretorio, char* arquivoGeo, char* arqCompleto) {
     }
 }
 
-void diretorioQry(char* diretorio, char* arquivoGeo, char* arquivoQry, char* arqCompleto) {
-
-    char *nomeGeo;
-    nomeGeo = strtok(arquivoGeo, ".");
-
-    if(diretorio[strlen(diretorio)-1] == '/' && arquivoQry[0] == '/') {
-        if(arquivoGeo[0] == '/') {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, ".");
-            strcat(arqCompleto, nomeGeo);   // nomeGeo é a apsta em que o arquivo qry está
-            strcat(arqCompleto, arquivoQry);
-        } else {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeGeo);   // nomeGeo é a apsta em que o arquivo qry está
-            strcat(arqCompleto, arquivoQry);
-        }         
-    } else if(diretorio[strlen(diretorio)-1] == '/' && arquivoQry[0] != '/') {
-        if (arquivoGeo[0] == '/') {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, ".");
-            strcat(arqCompleto, nomeGeo);   // nomeGeo é a apsta em que o arquivo qry está
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, arquivoQry);
-        } else {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, arquivoQry);
-        }
-
-    } else if(diretorio[strlen(diretorio)-1] != '/' && arquivoQry[0] == '/') {
-
-        if (arquivoGeo[0] == '/') {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, arquivoGeo);
-            strcat(arqCompleto, arquivoQry);
-        } else {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, arquivoQry);
-        }
-
-    } else if(diretorio[strlen(diretorio)-1] != '/' && arquivoQry[0] != '/') {
-        if (arquivoGeo[0] == '/') {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, arquivoGeo);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, arquivoQry);
-        } else {
-            strcat(arqCompleto, diretorio);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, nomeGeo);
-            strcat(arqCompleto, "/");
-            strcat(arqCompleto, arquivoQry);
-        }
-    }
-}
-
 void concatenarSvgFinal(char* diretorio, char* arquivoGeo, char* arquivoQry, char* arqCompleto, char* tipoArquivo) {
 
     char *nomeGeo;

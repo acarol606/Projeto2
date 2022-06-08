@@ -9,7 +9,7 @@ ArvB criaArvore();
 //void inserirEsquerda(Node N, int valor);
 //void inserirDireita(Node N, int valor);
 //void inserir(ArvB A, Item info);
-Node inserir(ArvB T, Node N, Item info);
+Node inserir(ArvB T, Node N, Item info, double xFig, double yFig);
 void imprimir(Node N);
 int tamanho(Node N);
 
@@ -21,6 +21,7 @@ Node remover(Node N, Item info);
 Node getRaiz(ArvB T);
 Item getItem(Node N);
 Node getEsquerda(Node N);
+Node getMeio(Node N);
 Node getDireita(Node N);
 
 // provavelmente na função de buscar vai ter que alterar bastante coisa quando for transofmrar em ternária:

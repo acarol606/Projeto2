@@ -53,7 +53,7 @@ Node getMeio(Node N) {
 /*  nova versão para a inserção, mais resumida
     perceba que agora é só uma função
 */
-Node inserir(ArvB T, Node N, Item info) {
+Node inserir(ArvB T, Node N, Item info, double xFig, double yFig) {
     No* raiz = (No*) N;
     Tree* tree = (Tree*) T;
     if(raiz == NULL) {
@@ -65,22 +65,14 @@ Node inserir(ArvB T, Node N, Item info) {
         if(tree->raiz == NULL)
             tree->raiz = novo;
         return novo;
-    } else if (strcmp(getTipo(raiz->conteudo), "t") == 0) {
-        //if(info < raiz->conteudo)
-        if(getX1(info) < getX1(raiz->conteudo))                   // se x1 < x insere na esquerda
-            raiz->esquerda = inserir(T, raiz->esquerda, info);
-        else if(getY1(info) < getY1(raiz->conteudo))              // se x1 >= x e y1 < y insere no meio
-            raiz->meio = inserir(T, raiz->meio, info);
-        else                                                    // se x1 >= x e y1 >= y insere na direita
-            raiz->direita = inserir(T, raiz->direita, info);
-        return raiz;
     } else {
-        if(getX(info) < getX(raiz->conteudo))                   // se x1 < x insere na esquerda
-            raiz->esquerda = inserir(T, raiz->esquerda, info);
-        else if(getY(info) < getY(raiz->conteudo))              // se x1 >= x e y1 < y insere no meio
-            raiz->meio = inserir(T, raiz->meio, info);
-        else                                                    // se x1 >= x e y1 >= y insere na direita
-            raiz->direita = inserir(T, raiz->direita, info);
+        if(xFig < getX(raiz->conteudo)) {                 // se x1 < x insere na esquerda
+            raiz->esquerda = inserir(T, raiz->esquerda, info, xFig, yFig);
+        } else if(yFig < getY(raiz->conteudo)) {          // se x1 >= x e y1 < y insere no meio
+            raiz->meio = inserir(T, raiz->meio, info, xFig, yFig);
+        } else {                                                 // se x1 >= x e y1 >= y insere na direita
+            raiz->direita = inserir(T, raiz->direita, info, xFig, yFig);
+        } 
         return raiz;
     }
 }
@@ -122,10 +114,9 @@ void imprimir(Node N) {
     No* raiz = (No*) N;
     if(raiz != NULL) {
         imprimir(raiz->esquerda);
-        //printf("%d ", raiz->conteudo);
-        printf("\noba");
         imprimir(raiz->meio);
         imprimir(raiz->direita);
+        printf("%s\n", getID(raiz->conteudo));
     }
 }
 

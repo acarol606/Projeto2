@@ -26,7 +26,8 @@ void interpretandoGeo(FILE* geoFile, ArvB arvore) {
             sscanf(comando, "%s %s %s %s %s %s %s", partesComando[0], partesComando[1], partesComando[2], partesComando[3], partesComando[4], corContorno, corPreench);
             Figura circ = criarFig(partesComando[0], partesComando[1], atof(partesComando[2]), 9999, 9999, atof(partesComando[3]), 9999, 9999, atof(partesComando[4]), 9999, 9999, corContorno, corPreench, NULL, NULL);
             Node raiz = getRaiz(arvore);
-            inserir(arvore, raiz, circ);
+            inserir(arvore, raiz, circ, getX(circ), getY(circ));
+
             //inserirLista(lista, circ);
 
         } else if(comando[0] == 'r') {
@@ -34,7 +35,7 @@ void interpretandoGeo(FILE* geoFile, ArvB arvore) {
             sscanf(comando, "%s %s %s %s %s %s %s %s", partesComando[0], partesComando[1], partesComando[2], partesComando[3], partesComando[4], partesComando[5], corContorno, corPreench);
             Figura rect = criarFig(partesComando[0], partesComando[1], atof(partesComando[2]), 9999, 9999, atof(partesComando[3]), 9999, 9999, 9999, atof(partesComando[4]), atof(partesComando[5]), corContorno, corPreench, NULL, NULL);
             Node raiz = getRaiz(arvore);
-            inserir(arvore, raiz, rect);
+            inserir(arvore, raiz, rect, getX(rect), getY(rect));
             //inserirLista(lista, rect);
 
         } else if(comando[0] == 'l') {
@@ -43,7 +44,7 @@ void interpretandoGeo(FILE* geoFile, ArvB arvore) {
             // criarFig(char tipo[],char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[])
             Figura line = criarFig(partesComando[0], partesComando[1], 9999, atof(partesComando[2]), atof(partesComando[4]), 9999, atof(partesComando[3]), atof(partesComando[5]), 9999, 9999, 9999, NULL, corPreench, NULL, NULL);
             Node raiz = getRaiz(arvore);
-            inserir(arvore, raiz, line);
+            inserir(arvore, raiz, line, getX1(line), getY1(line));
             //inserirLista(lista, line);
 
         } else if(comando[0] == 't') {
@@ -52,9 +53,10 @@ void interpretandoGeo(FILE* geoFile, ArvB arvore) {
             sscanf(comando, "%s %s %s %s %s %s %s %[^\n]", partesComando[0], partesComando[1], partesComando[2], partesComando[3], corContorno, corPreench, partesComando[4], partesComando[5]);        
             Figura text = criarFig(partesComando[0], partesComando[1], atof(partesComando[2]), 9999, 9999, atof(partesComando[3]), 9999, 9999, 9999, 9999, 9999, corContorno, corPreench, partesComando[5], partesComando[4]);
             Node raiz = getRaiz(arvore);
-            inserir(arvore, raiz, text);
+            inserir(arvore, raiz, text, getX(text), getY(text));
             //inserirLista(lista, text);
 
         }
     }
+    
 }

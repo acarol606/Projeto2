@@ -36,7 +36,7 @@ void percorrerSvg(FILE* svg, Node raiz) {
     }
 
     percorrerSvg(svg, getEsquerda(raiz));
-    //percorrerSvg(svg, getMeio(raiz));
+    percorrerSvg(svg, getMeio(raiz));
     percorrerSvg(svg, getDireita(raiz));
 
 
