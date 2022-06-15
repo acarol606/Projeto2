@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "arvore.h"
-#include "figuras.h"
-#include "geo.h"
 #include "parametros.h"
-#include "svg.h"
 #include "system.h"
 
 int main (int argc, char* argv[]) {

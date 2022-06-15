@@ -5,7 +5,7 @@
 #include "figuras.h"
 #include "arvore.h" 
 
-void createSvg(FILE *svg, ArvB arvore) {
+void createSvg(FILE *svg, Tree arvore) {
 
     //Item aux = getInicio(lista);
     //Tree* arv = (Tree*) arvore;

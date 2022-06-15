@@ -6,7 +6,7 @@
 #include "arvore.h" 
 
 // receber árvore ao invés da lista
-void interpretandoGeo(FILE* geoFile, ArvB arvore) {
+void interpretandoGeo(FILE* geoFile, Tree arvore) {
 
     //andar linha por linha do geo interpretando cada comando
     char comando[300];  // uma linha inteira do geo

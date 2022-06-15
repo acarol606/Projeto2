@@ -1,21 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "system.h"
 #include "arvore.h"
-#include "figuras.h"
 #include "geo.h"
 #include "parametros.h"
 #include "svg.h"
+#include "qry.h"
 
 void operacoes(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int leuQry) {
 
-    geoPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry);
-    qryPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry);
+    // criar árvore
+    Tree arvore = criaArvore();
+    geoPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry, arvore);
+    qryPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry, arvore);
 
 }
 
-void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int leuQry) {
+void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int leuQry, Tree arvore) {
 
     // tratamento do diretorio de entrada geo
     char* diretorioEntradaGeo = NULL;
@@ -30,8 +33,6 @@ void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         printf("Nao foi possivel abrir o arquivo geo.\n");
     }
 
-    // criar árvore
-    ArvB arvore = criaArvore();
     // chamar a função de interpretar o geo
     interpretandoGeo(geoFile, arvore);
 
@@ -55,7 +56,7 @@ void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
 
 }
 
-void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int leuQry) {
+void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int leuQry, Tree arvore) {
 
     if (leuQry != 0) {
 
@@ -78,7 +79,7 @@ void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         char* diretorioTxtFinal = NULL;
         diretorioTxtFinal = calloc(strlen(dirSaida) + strlen(arqGeo) + strlen(arqQry) + 20, sizeof(char));
 
-        // tratamento dos diretorio de saída para o .svg e .txt
+        // tratamento dos diretorios de saída para o .svg e .txt
         leuQry++;
         diretorios(dirSaida, arqGeo, diretorioSvgFinal);
         concatenarSvg(diretorioSvgFinal, arqQry, leuQry);
@@ -96,21 +97,19 @@ void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         if(arqTxt == NULL) {
             printf("\nNao foi possivel criar o arquivo txt final.");
         }
-    }
-    /*
+
         fprintf(svgFinal, "<svg>\n");   // inicializando o arquivo svg
-        interpretandoQry(qryFile, lista, svgFinal, arqTxt); // le o .qry, chama as funções do qry e preenche os arquivos finais
-        createSvg(svgFinal, lista); // cria o svg final a partir da lista que foi alterada conforme os queries
+        leituraQry(qryFile, arvore, svgFinal, arqTxt);
+        createSvg(svgFinal, arvore); // cria o svg final a partir da lista que foi alterada conforme os queries
         fprintf(svgFinal, "\n</svg>");  // fechando o arquivo svg
 
+        /*
         free(diretorioEntradaQry);
         free(diretorioSvgFinal);
         free(diretorioTxtFinal);
         fclose(qryFile);
         fclose(svgFinal);
         fclose(arqTxt);
-
+        */
     }
-
-    */
 }

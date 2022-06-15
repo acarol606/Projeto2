@@ -3,7 +3,7 @@
 
 #include "arvore.h"
 
-void createSvg(FILE *svg, ArvB arvore);  // cria o svg a partir da lista que contem as figuras
+void createSvg(FILE *svg, Tree arvore);  // cria o svg a partir da lista que contem as figuras
 void percorrerSvg(FILE* svg, Node N);
 void svgRect(FILE *svg, Node aux);  // linha de comando de retangulo no svg
 void svgCirc(FILE *svg, Node aux);  // linha de comando de circulo no svg

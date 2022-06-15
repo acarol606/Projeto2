@@ -14,19 +14,19 @@ typedef struct no {
 typedef struct {
     No *raiz;
     int tamanho;
-} Tree;
+} arvT;
 
-ArvB criaArvore() {
-    Tree *arvore;
-    arvore = (Tree*) malloc(sizeof(Tree));
+Tree criaArvore() {
+    arvT *arvore;
+    arvore = (arvT*) malloc(sizeof(arvT));
     arvore->raiz = NULL;
     arvore->tamanho = 0;
 
     return(arvore);
 }
 
-Node getRaiz(ArvB T) {
-    Tree* arvore = (Tree*) T;
+Node getRaiz(Tree T) {
+    arvT* arvore = (arvT*) T;
     return arvore->raiz;
 }
 
@@ -53,9 +53,9 @@ Node getMeio(Node N) {
 /*  nova versão para a inserção, mais resumida
     perceba que agora é só uma função
 */
-Node inserir(ArvB T, Node N, Item info, double xFig, double yFig) {
+Node inserir(Tree T, Node N, Item info, double xFig, double yFig) {
     No* raiz = (No*) N;
-    Tree* tree = (Tree*) T;
+    arvT* tree = (arvT*) T;
     if(raiz == NULL) {
         No *novo = (No*)malloc(sizeof(No));
         novo->conteudo = info;
@@ -208,7 +208,7 @@ void inserirDireita(Node N, int valor) {
     faz uso dos dois procedimentos anteriores,
     inserindo à esquerda ou à direita
 
-void inserir(ArvB A, Item info) {
+void inserir(Tree A, Item info) {
     Tree* arv = (Tree*) A;
     if(arv->raiz == NULL) {
         No *novo = (No*)malloc(sizeof(No));

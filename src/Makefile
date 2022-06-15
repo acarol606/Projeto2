@@ -9,13 +9,14 @@ all: $(LINK_TARGET)
 	echo All done
 
 # Dependencies
-main.o: parametros.h figuras.h arvore.h geo.h svg.h #qry.h
+main.o: parametros.h system.h
 parametros.o: parametros.h
 arvore.o: arvore.h
 geo.o: geo.h figuras.h arvore.h
 figuras.o: figuras.h
 svg.o: svg.h figuras.h arvore.h
-system.o: system.h arvore.h figuras.h geo.h svg.h parametros.h
+system.o: system.h arvore.h geo.h svg.h parametros.h qry.h
+qry.o: qry.h arvore.h svg.h
 
 $(LINK_TARGET): $(OBJECTS) 
 # $@ expands to the rule's target (LINK_TARGET)
