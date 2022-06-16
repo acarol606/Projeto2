@@ -1,0 +1,3 @@
+tipo = t, id = 1, x = 999999.000000, y = 9999999.000000, ancora = none, cor preenchimento = none, cor borda = none, texto = none
+AGUA
+AGUA
