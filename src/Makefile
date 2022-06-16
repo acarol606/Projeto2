@@ -1,6 +1,5 @@
 LINK_TARGET = ted
-
-OBJECTS = main.o parametros.o arvore.o geo.o figuras.o svg.o system.o
+OBJECTS = main.o parametros.o arvore.o geo.o figuras.o svg.o system.o 
 
 # Make Macro defined by 3 macro expansions
 REBUILDABLES = $(OBJECTS)

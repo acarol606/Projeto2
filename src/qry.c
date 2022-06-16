@@ -8,10 +8,10 @@
 
 void leituraQry(FILE *qryFile, Tree arv, FILE *svg, FILE *arqTxt) {
 
-    printf("entrou na leitursQry\n");
+    //printf("entrou na leitursQry\n");
     char comando[500], id[10];
     float x, y, v, dx, dy, w, h;
-
+    
     while (fscanf(qryFile, "%s", comando) != EOF) {
 
         if (!strcmp(comando, "na")) {
@@ -38,8 +38,8 @@ void leituraQry(FILE *qryFile, Tree arv, FILE *svg, FILE *arqTxt) {
 }
 
 void funcaoNA(Tree arv, FILE* svg, FILE* arqTxt, float v) {
-
     printf("entrou NA\n");
+
 }
 
 void funcaoTP(Tree arv, FILE* svg, FILE* arqTxt, float x, float y) {
