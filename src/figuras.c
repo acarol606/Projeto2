@@ -224,3 +224,22 @@ void changePreench(Figura Fig, char novoPreench[]) {
 }
 //void liberaFigura
 //free
+
+void limpaFigura(Figura Fig) {
+
+    figura* fig = (figura*) Fig;
+
+    fig->x = 999999;
+    fig->x1 = 999999;
+    fig->x2 = 999999;
+    fig->y = 9999999;
+    fig->y1 = 999999;
+    fig->y2 = 9999999;
+    fig->r = 0;
+    fig->w = 0;
+    fig->h = 0;
+    sprintf(fig->corb, "%s", "none");
+    sprintf(fig->corp, "%s", "none");
+    sprintf(fig->txto, "%s", "none");
+    sprintf(fig->ancora, "%s", "none");
+}

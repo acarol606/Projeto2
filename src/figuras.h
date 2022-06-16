@@ -36,5 +36,6 @@ void changeW(Figura fig, double novoW);     // altera o valor da largura do ret√
 void changeH(Figura fig, double novoH);     // altera o valor da altura do ret√¢ngulo
 void changeBorda(Figura fig, char novaBorda[]); // altera a cor da borda da figura
 void changePreench(Figura fig, char novoPreench[]); // altera a cor do preenchimento da figura
+void limpaFigura(Figura Fig);
 
 #endif 

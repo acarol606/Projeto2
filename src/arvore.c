@@ -120,6 +120,18 @@ void imprimir(Node N) {
     }
 }
 
+/* 
+void percorreArvore(Node N) {
+
+    No* raiz = (No*) N;
+    if (raiz != NULL) {
+        percorreArvore(raiz->esquerda);
+        percorreArvore(raiz->meio);
+        percorreArvore(raiz->direita);
+    }
+}
+ */
+
 // função para a remoção de um nó
 Node remover(Node N, Item info) {
     No* raiz = (No*) N;
@@ -133,6 +145,7 @@ Node remover(Node N, Item info) {
     } else {
         if(raiz->conteudo == info) {
             // remove nós folhas (nós sem filhos)
+            // if(raiz->esquerda == NULL && raiz->meio == NULL && raiz->direita == NULL)
             if(raiz->esquerda == NULL && raiz->direita == NULL) {
                 free(raiz);
                 return NULL;
