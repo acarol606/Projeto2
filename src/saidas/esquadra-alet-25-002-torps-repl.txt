@@ -1,0 +1,70 @@
+
+ATINGIDO: circulo, id = 101
+x, y = 309.065161, 540.478608
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 160.000000
+x,y = 623.330511, 847.543916
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 117
+x, y = 385.437116, 493.513779
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 161.000000
+x,y = 699.702466, 800.579087
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 109
+x, y = 264.631816, 332.574535
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 162.000000
+x,y = 578.897166, 639.639843
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 106
+x, y = 340.455266, 205.503526
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 163.000000
+x,y = 654.720616, 512.568834
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 121
+x, y = 166.947653, 449.001750
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 164.000000
+x,y = 481.213003, 756.067058
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------

@@ -1,0 +1,2 @@
+ATINGIDO: texto, id = 1, x = 55.000000, y = 47.500000, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]
+CLONE: texto, id = 45.000000, x = 65.000000, y = 140.973366, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]

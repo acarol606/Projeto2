@@ -1,0 +1,570 @@
+
+ATINGIDO: texto, id = 1
+x, y = 55.000000, 47.500000
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+CLONE: texto, id = 45.000000
+x, y = 65.000000, 140.973366
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+-----------------------
+
+ATINGIDO: texto, id = 2
+x, y = 55.000000, 47.500000
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+CLONE: texto, id = 45.000000
+x, y = 65.000000, 140.973366
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+-----------------------
+
+ATINGIDO: texto, id = 3
+x, y = 55.000000, 47.500000
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+CLONE: texto, id = 45.000000
+x, y = 65.000000, 140.973366
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+-----------------------
+
+ATINGIDO: texto, id = 4
+x, y = 55.000000, 47.500000
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+CLONE: texto, id = 45.000000
+x, y = 65.000000, 140.973366
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+-----------------------
+
+ATINGIDO: texto, id = 5
+x, y = 55.000000, 47.500000
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+CLONE: texto, id = 45.000000
+x, y = 65.000000, 140.973366
+ancora = m
+cor preenchimento = black
+cor borda = black
+texto = {+]
+
+-----------------------
+
+ATINGIDO: linha, id = 31
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 316.265863, 185.304322
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 47.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 326.265863, 278.777688
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 32
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 329.314085, 175.073425
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 47.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 339.314085, 268.546791
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 33
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 310.735007, 186.946726
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 47.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 320.735007, 280.420092
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 34
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 324.215278, 180.538514
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 47.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 334.215278, 274.011880
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 47.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 47.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: circulo, id = 21
+x, y = 54.240766, 156.241064
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 49.000000
+x,y = 64.240766, 249.714430
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 25
+x, y = 54.206116, 157.440962
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 49.000000
+x,y = 64.206116, 250.914328
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 22
+x, y = 55.288239, 157.204721
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 49.000000
+x,y = 65.288239, 250.678087
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 23
+x, y = 55.369319, 157.245523
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 49.000000
+x,y = 65.369319, 250.718889
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: circulo, id = 24
+x, y = 55.739815, 157.527331
+raio = 2.500000
+cor preenchimento = brown
+cor borda = #FF6600
+
+CLONE: circulo, id = 49.000000
+x,y = 65.739815, 251.000697
+raio = 2.500000
+cor preenchimento = #FF6600
+cor borda = brown
+
+-----------------------
+
+ATINGIDO: linha, id = 31
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 316.265863, 185.304322
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 49.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 326.265863, 278.777688
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 32
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 329.314085, 175.073425
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 49.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 339.314085, 268.546791
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 33
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 310.735007, 186.946726
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 49.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 320.735007, 280.420092
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 34
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 324.215278, 180.538514
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 49.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 334.215278, 274.011880
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 49.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 49.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 31
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 316.265863, 185.304322
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 50.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 326.265863, 278.777688
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 32
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 329.314085, 175.073425
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 50.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 339.314085, 268.546791
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 33
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 310.735007, 186.946726
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 50.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 320.735007, 280.420092
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 34
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 324.215278, 180.538514
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 50.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 334.215278, 274.011880
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 50.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 50.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 31
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 316.265863, 185.304322
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 51.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 326.265863, 278.777688
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 32
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 329.314085, 175.073425
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 51.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 339.314085, 268.546791
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 33
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 310.735007, 186.946726
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 51.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 320.735007, 280.420092
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 34
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 324.215278, 180.538514
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 51.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 334.215278, 274.011880
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 51.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 51.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 31
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 316.265863, 185.304322
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 52.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 326.265863, 278.777688
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 32
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 329.314085, 175.073425
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 52.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 339.314085, 268.546791
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 33
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 310.735007, 186.946726
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 52.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 320.735007, 280.420092
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 34
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 324.215278, 180.538514
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 52.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 334.215278, 274.011880
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 52.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
+
+ATINGIDO: linha, id = 35
+x1, y1 = 305.000000, 157.500000
+x2, y2 = 313.130120, 186.377347
+cor preenchimento = #000080
+cor borda = (null)
+
+CLONE: linha, id = 52.000000
+x1, y1 = 315.000000, 250.973366
+x2, y2 = 323.130120, 279.850713
+cor preenchimento = (null)
+cor borda = #000080
+
+-----------------------
