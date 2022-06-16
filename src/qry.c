@@ -70,15 +70,14 @@ void funcaoTP(Tree arv, FILE* svg, FILE* arqTxt, float x, float y) {
             verificador = textInside(x, y, item);
         }
 
-        no = getEsquerda(no);
-        //no = getMeio(no);
+        //no = getEsquerda(no);
+        no = getMeio(no);
         //no = getDireita(no);
         printf("só não percorreu a arvore toda (não sei como fazer :S)\n");
 
         if (verificador == 0) {     // figura dentro da coordenada
             fprintf(svg, "\n\t<text x=\"%f\" y=\"%f\" fill=\"red\">*</text>", x, y);
             printf("removi a figura de um jeito porco (ao inves de chamar a função de remover nó da arvore)\n");
-            limpaFigura(item);
             if (strcmp(tipo, "c") == 0)
                 fprintf(arqTxt, "tipo = %s, id = %s, x = %f, y = %f, raio = %f, cor preenchimento = %s, cor borda = %s\n", getTipo(item), getID(item), getX(item), getY(item), getR(item), getCorp(item), getCorb(item));
             else if (strcmp(tipo, "r") == 0) 
@@ -87,6 +86,8 @@ void funcaoTP(Tree arv, FILE* svg, FILE* arqTxt, float x, float y) {
                 fprintf(arqTxt, "tipo = %s, id = %s, x = %f, y = %f, ancora = %s, cor preenchimento = %s, cor borda = %s, texto = %s\n", getTipo(item), getID(item), getX(item), getY(item), getAncora(item), getCorp(item), getCorb(item), getText(item));
             else if (strcmp(tipo, "l") == 0)
                 fprintf(arqTxt, "tipo = %s, id = %s, x1 = %f, y1 = %f, x2 = %f, y2 = %f, cor = %s\n", getTipo(item), getID(item), getX1(item), getY1(item), getX2(item), getY2(item), getCorp(item));
+            
+            limpaFigura(item);
         } else {                    // figura fora da coordenada
             fprintf(svg, "\n\t<text x=\"%f\" y=\"%f\" fill=\"grey\">*</text>", getX(item), getY(item));
             fprintf(arqTxt, "AGUA\n");
