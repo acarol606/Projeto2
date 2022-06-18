@@ -4,7 +4,7 @@
 #include <math.h>
 #include "figuras.h"
 
-typedef struct figura{
+typedef struct figura {
 
     char tipo[2], id[40], ancora[2];
     double x, x1, x2, y, y1, y2, r, w, h;
@@ -18,7 +18,7 @@ typedef struct pg {
 } ponto;
 
 Ponto criaPonto(double x, double y) {
-    ponto *novoPonto = calloc(1, sizeof(ponto));
+    ponto* novoPonto = calloc(1, sizeof(ponto));
 
     novoPonto->x = x;
     novoPonto->y = y;
@@ -31,8 +31,8 @@ float getXponto(Ponto Pnt) {
     if (Pnt == NULL) {
         return 0;
     }
-    ponto* pt = (ponto*) Pnt;
-    return(pt->x); 
+    ponto* pt = (ponto*)Pnt;
+    return(pt->x);
 }
 
 float getYponto(Ponto Pnt) {
@@ -40,26 +40,31 @@ float getYponto(Ponto Pnt) {
     if (Pnt == NULL) {
         return 0;
     }
-    ponto* pt = (ponto*) Pnt;
-    return(pt->y); 
+    ponto* pt = (ponto*)Pnt;
+    return(pt->y);
 }
 
-Figura criarFig(char tipo[],char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
+Figura criarFig(char tipo[], char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
 
     figura* fig = (figura*)malloc(sizeof(figura));
-    if (tipo =='c'){
-     fig->protecao=60;
+    printf("Tipo figura: |%s|\n", tipo);
 
-    }else if (tipo=='t'){
+    if (strcmp(tipo, "c") == 0) {
+        fig->protecao = 60;
+
+    }
+    else if (strcmp(tipo, "t") == 0) {
         fig->protecao = 5;
 
-    }else if(tipo =='l'){
-        fig->protecao =50;
-
-    }else if(tipo == 'r'){
-    fig->protecao = 60;
     }
-   
+    else if (strcmp(tipo, "l") == 0) {
+        fig->protecao = 50;
+
+    }
+    else if (strcmp(tipo, "r") == 0) {
+        fig->protecao = 60;
+    }
+
     sprintf(fig->tipo, "%s", tipo);
     sprintf(fig->id, "%s", id);
 
@@ -81,191 +86,205 @@ Figura criarFig(char tipo[],char id[], double x, double x1, double x2, double y,
 
 }
 
+float getProtecao(Figura Fig) {
+    figura* fig = (figura*)Fig;
+    return(fig->protecao);
+}
+
 char* getTipo(Figura Fig) {
 
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->tipo);
 }
 
 char* getID(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->id);
 }
 
 double getX(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
-    return(fig->x); 
+    figura* fig = (figura*)Fig;
+    return(fig->x);
 }
 
 double getX1(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
-    return(fig->x1); 
+    figura* fig = (figura*)Fig;
+    return(fig->x1);
 }
 
 double getX2(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
-    return(fig->x2); 
+    figura* fig = (figura*)Fig;
+    return(fig->x2);
 }
 
 double getY(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->y);
 
 }
 
 double getY1(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
-    return(fig->y1); 
+    figura* fig = (figura*)Fig;
+    return(fig->y1);
 }
 
 double getY2(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
-    return(fig->y2); 
+    figura* fig = (figura*)Fig;
+    return(fig->y2);
 }
 
 double getW(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->w);
-    
+
 }
 
 double getH(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->h);
-    
+
 }
 
 double getR(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->r);
-    
+
 }
 
 char* getCorb(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->corb);
 }
 
 char* getCorp(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->corp);
 }
 
 char* getText(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->txto);
 }
 
 char* getAncora(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return(fig->ancora);
 }
 
-double getcomprimentolinha(Figura Fig){
-    figura* fig = (figura*) Fig;
-    
-    if (fig->x1 > fig->x2 && fig->y1 == fig->y2){ // mesmo y e x diferente
+double getcomprimentolinha(Figura Fig) {
+    figura* fig = (figura*)Fig;
+
+    if (fig->x1 > fig->x2 && fig->y1 == fig->y2) { // mesmo y e x diferente
         return fig->x1 - fig->x2;
-    }else if (fig->x1 < fig->x2 && fig->y1 == fig->y2){ // mesmo y e x diferente
+    }    
+else if (fig->x1 < fig->x2 && fig->y1 == fig->y2) { // mesmo y e x diferente
         return fig->x2 - fig->x1;
-    } else if (fig->y1 < fig->y2 && fig->x1 == fig->x2){ // mesmo x e y diferente
+    }
+    else if (fig->y1 < fig->y2 && fig->x1 == fig->x2) { // mesmo x e y diferente
         return fig->y2 - fig->y1;
-    }else if (fig->y1 > fig->y2 && fig->x1 == fig->x2){ // mesmo x e y diferente
+    }
+    else if (fig->y1 > fig->y2 && fig->x1 == fig->x2) { // mesmo x e y diferente
         return fig->y1 - fig->y2;
-    }else {
-        return (pow(fig->x2-fig->x1,2)+pow(fig->y2-fig->y1,2));
+    }
+    else {
+        double result = sqrt(pow(fig->x2 - fig->x1, 2) + pow(fig->y2 - fig->y1, 2));
+        printf("Raiz quadrada: %f\n", result);
+        return result;
     }
 }
 
 void changeX(Figura Fig, double novoX) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->x = novoX;
 }
 
 void changeY(Figura Fig, double novoY) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->y = novoY;
 }
 
 void changeX1(Figura Fig, double novoX1) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->x1 = novoX1;
 }
 
 void changeY1(Figura Fig, double novoY1) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->y1 = novoY1;
 }
 
 void changeX2(Figura Fig, double novoX2) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->x2 = novoX2;
 }
 
 void changeY2(Figura Fig, double novoY2) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->y2 = novoY2;
 }
 
-void changeProtecao (Figura Fig,float reducao){
-    figura* fig = (figura*) Fig;
-    fig->protecao=(fig->protecao-reducao);
+void changeProtecao(Figura Fig, float reducao) {
+    figura* fig = (figura*)Fig;
+    printf("Tipo: %s\n", fig->tipo);
+    printf("Proteção anterior: %f\n", fig->protecao);
+    fig->protecao = (fig->protecao - reducao);
+    printf("Proteção deduzida: %f\n\n", fig->protecao);
 }
 
 void changeW(Figura Fig, double novoW) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->w = novoW;
 }
 
 void changeH(Figura Fig, double novoH) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     fig->h = novoH;
 }
 
 void changeBorda(Figura Fig, char novaBorda[]) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     strcpy(fig->corb, novaBorda);
 }
 
 float getTextSize(Figura Fig) {
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     return strlen(fig->txto);
 }
 
 void changePreench(Figura Fig, char novoPreench[]) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
     strcpy(fig->corp, novoPreench);
 }
 //void liberaFigura
 //free
 void limpaFigura(Figura Fig) {
 
-    figura* fig = (figura*) Fig;
+    figura* fig = (figura*)Fig;
 
     fig->x = 999999;
     fig->x1 = 999999;
