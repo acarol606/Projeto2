@@ -164,7 +164,6 @@ void funcaoTR(Node no, FILE* svg, FILE* arqTxt, float x, float y, float dx, floa
 void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float h, float agress) {
 
     // printf("entrou BE\n");
-
     Item item;
     int verificador;
     float red;
@@ -181,11 +180,11 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
         verificador = insideIrradiation(x, y, w, h, 'r', item);
         if (verificador == 0) {
             
-            red = (agress * (w*h) / ((w - x) * (h - y)));
+            red = (agress * (getW(item) * getH(item)) / (w * h));
             printf("Agressão: %f\n", agress);
             changeProtecao(item, red);
 
-            // svgAnchor(svg, getX(item), getY(item));
+            svgAnchor(svg, getX(item), getY(item));
 
             if (getProtecao(item) <= 0) {
                 fprintf(arqTxt, "Retangulo REMOVIDA:\n");
@@ -215,7 +214,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
             red = ((agress * (raio * raio * pi)) / ((w - x) * (h - y)));
             changeProtecao(item, red);
 
-            // svgAnchor(svg, getX(item), getY(item));
+            svgAnchor(svg, getX(item), getY(item));
 
             if (getProtecao(item) <= 0) {
                 fprintf(arqTxt, "Circulo REMOVIDA:\n");
@@ -242,7 +241,8 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
             red = ((agress * (0.1 * getcomprimentolinha(item))) / ((w - x) * (h - y)));
             changeProtecao(item, red);
 
-            // svgAnchor(svg, getX(item), getY(item));
+            svgAnchor(svg, getX1(item), getY1(item));
+
             if (getProtecao(item) <= 0) {
                 fprintf(arqTxt, "Linha REMOVIDA:\n");
                 fprintf(arqTxt, "X1: %lf\n", getX1(item));
@@ -268,13 +268,13 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
             red = ((agress * 0.1) / ((w - x) * (h - y)));
             changeProtecao(item, red);
 
-           /*  if (getAncora(item) == 'i') {
+            if (strcmp(getAncora(item), "i") == 0) {
                 svgAnchor(svg, getX(item), getY(item));
-            } else if (getAncora(item) == 'm') {
+            } else if (strcmp(getAncora(item), "m") == 0) {
                 svgAnchor(svg, (getX(item)+(getTextSize(item)/2)), getY(item));
             } else {
                 svgAnchor(svg, (getX(item)+getTextSize(item)), getY(item));
-            } */
+            }
             
             if (getProtecao(item) <= 0) {
                 fprintf(arqTxt, "Texto REMOVIDA:\n");

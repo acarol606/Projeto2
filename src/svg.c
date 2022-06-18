@@ -63,7 +63,7 @@ void svgLine(FILE *svg, Item aux) {
 }
 
 void svgAnchor(FILE *svg, double x, double y) {
-    fprintf(svg, "\n\t<circle cx=\"%lf\" cy=\"%lf\" r=\"%f\" fill=\"%s\" stroke=\"%s\"/>", x, y, 2.0, "red", "red");
+    fprintf(svg, "\n\t<circle cx=\"%lf\" cy=\"%lf\" r=\"%f\" fill=\"%s\" stroke=\"%s\"/>", x, y, 2.5, "red", "red");
 }
 
 void svgText(FILE *svg, Item aux) {

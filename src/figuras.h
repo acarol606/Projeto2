@@ -23,6 +23,7 @@ char* getText(Figura fig);  // retorna o texto
 char* getAncora(Figura Fig);// retorna a âncora do texto
 double getcomprimentolinha(Figura Fig); // retorna o comprimento da linha
 float getTextSize(Figura Fig); // retorna o tamanho do texto
+float getProtecao(Figura Fig);
 
 Ponto criaPonto(double x, double y);    // cria um ponto com as coordenadas x,y passadas, retorna um void* Ponto
 float getXponto(Ponto pnt); // retorna o X do ponto
