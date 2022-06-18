@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "figuras.h"
 
 typedef struct figura{
@@ -8,7 +9,7 @@ typedef struct figura{
     char tipo[2], id[40], ancora[2];
     double x, x1, x2, y, y1, y2, r, w, h;
     char corb[25], corp[25], txto[100];
-
+    float protecao;
 } figura;
 
 typedef struct pg {
@@ -46,7 +47,19 @@ float getYponto(Ponto Pnt) {
 Figura criarFig(char tipo[],char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
 
     figura* fig = (figura*)malloc(sizeof(figura));
+    if (tipo =='c'){
+     fig->protecao=60;
 
+    }else if (tipo=='t'){
+        fig->protecao = 5;
+
+    }else if(tipo =='l'){
+        fig->protecao =50;
+
+    }else if(tipo == 'r'){
+    fig->protecao = 60;
+    }
+   
     sprintf(fig->tipo, "%s", tipo);
     sprintf(fig->id, "%s", id);
 
@@ -162,6 +175,22 @@ char* getAncora(Figura Fig) {
     figura* fig = (figura*) Fig;
     return(fig->ancora);
 }
+double getcomprimentolinha(Figura Fig){
+    figura* fig = (figura*) Fig;
+    
+    if (fig->x1 > fig->x2 && fig->y1 == fig->y2){ // mesmo y e x diferente
+        return fig->x1 - fig->x2;
+    }else if (fig->x1 < fig->x2 && fig->y1 == fig->y2){ // mesmo y e x diferente
+        return fig->x2 - fig->x1;
+    } else if (fig->y1 < fig->y2 && fig->x1 == fig->x2){ // mesmo x e y diferente
+        return fig->y2 - fig->y1;
+    }else if (fig->y1 > fig->y2 && fig->x1 == fig->x2){ // mesmo x e y diferente
+        return fig->y1 - fig->y2;
+    }else {
+        return (pow(fig->x2-fig->x1,2)+pow(fig->y2-fig->y1,2));
+    }
+}
+
 
 void changeX(Figura Fig, double novoX) {
 
@@ -197,6 +226,10 @@ void changeY2(Figura Fig, double novoY2) {
 
     figura* fig = (figura*) Fig;
     fig->y2 = novoY2;
+}
+void changeProtecao (Figura Fig,float reducao){
+    figura* fig = (figura*) Fig;
+    fig->protecao=(fig->protecao-reducao);
 }
 
 void changeW(Figura Fig, double novoW) {

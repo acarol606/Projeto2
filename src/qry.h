@@ -15,7 +15,7 @@ void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y);
 void funcaoTR(Node no, FILE* svg, FILE* arqTxt, float x, float y, float dx, float dy, char id[]);
 
 // 
-void funcaoBE(Tree arv, FILE* svg, FILE* arqTxt, float x, float y, float w, float h);
+void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float h,float agress);
 
 
 // funções que verificam se as coordenadas passadas de parâmetro se encontram dentro das respectivas figuras
@@ -23,5 +23,6 @@ int rectInside(float x, float y, Item rect);
 int circInside(float x, float y, Item circ);
 int lineInside(float x, float y, Item line);
 int textInside(float x, float y, Item text);
+int insideIrradiation(float x, float y, float w, float h, char type,Item item);
 
 #endif

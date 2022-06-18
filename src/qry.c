@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,14 +11,15 @@ void leituraQry(FILE *qryFile, Tree arv, FILE *svg, FILE *arqTxt) {
 
     //printf("entrou na leitursQry\n");
     char comando[500], id[10];
-    float x, y, v, dx, dy, w, h,agress;
+    float x, y,dx, dy, w, h,agress;
     
     while (fscanf(qryFile, "%s", comando) != EOF) {
 
         if (!strcmp(comando, "na")) {
 
             fscanf(qryFile, "%f ",&agress);
-            printf("agress,%f\n",agress);
+            printf("agress: %f\n",agress);
+
 
             //funcaoNA(arv, svg, arqTxt, v);
         } 
@@ -36,7 +36,7 @@ void leituraQry(FILE *qryFile, Tree arv, FILE *svg, FILE *arqTxt) {
         else if (!strcmp(comando, "be")) {
 
             fscanf(qryFile, "%f %f %f %f", &x, &y, &w, &h);
-            funcaoBE(arv, svg, arqTxt, x, y, w, h);
+            funcaoBE(getRaiz(arv), svg, arqTxt, x, y, w, h,agress);
         }
     }
 }
@@ -153,13 +153,74 @@ void funcaoTR(Node no, FILE* svg, FILE* arqTxt, float x, float y, float dx, floa
 
 }
 
-void funcaoBE(Tree arv, FILE* svg, FILE* arqTxt, float x, float y, float w, float h) {
-
+void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float h,float agress) {
 
     printf("entrou BE\n");
+
+Item item;
+int verificador;
+float red;
+float pi=3.14;
+int raio;
+if (no== NULL) {
+return;
 }
 
-int rectInside(float x, float y, Item rect) {
+item = getItem(no);
+
+if(strcmp(getTipo(item), "r") == 0) {
+verificador = insideIrradiation(x, y, w, h, 'r', item);
+if(verificador == 0) {
+    red=(agress*(w*h)/(x*y));
+    changeProtecao(item,red);
+    if (red == 0){
+        limpaFigura(item);
+    }
+   
+    
+}
+} else if(strcmp(getTipo(item), "c") == 0) {
+verificador = insideIrradiation(x, y, w, h,'c', item);
+if (verificador == 0) {
+    raio=getR(item);
+   red=((agress*((raio*raio*pi)/2))/(x*y));
+   changeProtecao(item,red);
+
+
+    if (red ==0){
+        limpaFigura(item);
+
+}
+} else if(strcmp(getTipo(item), "l") == 0) {
+verificador = insideIrradiation(x, y, w, h, 'l', item);
+if (verificador == 0) {
+    red=((agress*(0.1*getcomprimentolinha(item)))/(x*y));
+    changeProtecao(item,red);
+    if (red ==0){
+        limpaFigura(item);
+}
+} else if(strcmp(getTipo(item), "t") == 0) {
+verificador = insideIrradiation(x, y, w, h, 't', item);
+if (verificador == 0) {
+    red=((agress*0.1)/(x*y));
+     changeProtecao(item,red);
+    if (red ==0){
+        limpaFigura(item);
+
+}
+
+}
+}
+}
+}
+// recursão
+funcaoBE(getEsquerda(no), svg, arqTxt, x, y, w, h,agress);
+funcaoBE(getMeio(no), svg, arqTxt, x, y, w, h,agress);
+funcaoBE(getDireita(no), svg, arqTxt, x, y, w, h,agress);
+ 
+}
+
+int rectInside(float x, float y, Item rect){
 
     if (x >= getX(rect) && x <=getX(rect) + getW(rect)) {
         if (y >= getY(rect) && y <= getY(rect)+getH(rect)) {
@@ -192,11 +253,32 @@ int lineInside(float x, float y, Item line) {
         return 1;
     
 }
-
 int textInside(float x, float y, Item text) {
 
     if (getX(text) == x && getY(text) == y) 
         return 0;
     else 
         return 1;
+}
+int insideIrradiation(float x, float y, float w, float h, char type,Item item) {
+if (w == -1 && h == -1 && type == 't') {
+    if (getX(item) >= x && getX(item) <= w && getY(item) >= y && getY(item) <= h)
+    return 0;
+    else
+        return 1;
+} if (w == -1 && h == -1 && type == 'l') {
+    if (getX1(item) == x || getX2(item) == x|| getY1(item) == y || getY2(item) == y) {
+    return 0;
+} else
+    return 1;
+} else {
+if (x >= getX(item) && x <=getX(item) + getW(item)) {
+    if (y >= getY(item) && y <= getY(item)+getH(item)) {
+        return 0; // retorna 0 se estiver dentro do retangulo
+} else {
+    return 1; // retorna 1 se estiver fora do retangulo
+}
+} else
+    return 1;
+}
 }
