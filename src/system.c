@@ -49,7 +49,7 @@ void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         printf("\nNao foi possivel abrir o svg inicial.");
     }
 
-    fprintf(svgInicial, "<svg>");
+    fprintf(svgInicial, "<svg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">");
     createSvg(svgInicial, arvore);  // insere as figuras que estão na lista no arquivo svg inicial
     fprintf(svgInicial, "\n</svg>");
     fclose(svgInicial);
@@ -98,7 +98,7 @@ void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
             printf("\nNao foi possivel criar o arquivo txt final.");
         }
 
-        fprintf(svgFinal, "<svg>\n");   // inicializando o arquivo svg
+        fprintf(svgFinal, "<svg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n");   // inicializando o arquivo svg
         leituraQry(qryFile, arvore, svgFinal, arqTxt);
         createSvg(svgFinal, arvore); // cria o svg final a partir da lista que foi alterada conforme os queries
         fprintf(svgFinal, "\n</svg>");  // fechando o arquivo svg

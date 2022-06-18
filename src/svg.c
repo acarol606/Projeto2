@@ -47,6 +47,11 @@ void svgRect(FILE *svg, Item aux) {
     fprintf(svg, "\n\t<rect x=\"%f\" y=\"%f\" width=\"%f\" height=\"%f\" fill=\"%s\" stroke=\"%s\"/>", getX(aux), getY(aux), getW(aux), getH(aux), getCorp(aux), getCorb(aux));
 }
 
+void svgRectArea(FILE *svg, double x, double y, double w, double h) {
+
+    fprintf(svg, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"%s\" stroke=\"%s\"/>", x, y, w, h, "transparent", "red");
+}
+
 void svgCirc(FILE *svg, Item aux) {
 
     fprintf(svg, "\n\t<circle cx=\"%f\" cy=\"%f\" r=\"%f\" fill=\"%s\" stroke=\"%s\"/>", getX(aux), getY(aux), getR(aux), getCorp(aux), getCorb(aux));
@@ -55,6 +60,10 @@ void svgCirc(FILE *svg, Item aux) {
 void svgLine(FILE *svg, Item aux) {
 
     fprintf(svg, "\n\t<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"%s\"/>", getX1(aux), getY1(aux), getX2(aux), getY2(aux), getCorp(aux));
+}
+
+void svgAnchor(FILE *svg, double x, double y) {
+    fprintf(svg, "\n\t<circle cx=\"%lf\" cy=\"%lf\" r=\"%f\" fill=\"%s\" stroke=\"%s\"/>", x, y, 2.0, "red", "red");
 }
 
 void svgText(FILE *svg, Item aux) {

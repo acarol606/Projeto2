@@ -4,7 +4,6 @@
 #include "parametros.h"
 
 void diretorios(char* diretorio, char* arquivoGeo, char* arqCompleto) { //tratamentos no endereço
-
     if (diretorio[strlen(diretorio)-1] == '/' || arquivoGeo[0] == '/') {
 
         if(diretorio[strlen(diretorio)-1] == '/' && arquivoGeo[0] == '/') {
@@ -42,7 +41,7 @@ void concatenarSvg(char* dirSvg, char* arqQry, int leuQry) {
 }
 
 void concatenarTxt(char* dirTxt, char* dirSvg) {
-
+    printf("Entrou concatenarTxt\n");
     strcat(dirTxt, dirSvg);
     strtok(dirTxt, ".");
     strcat(dirTxt, ".txt");

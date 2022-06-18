@@ -39,4 +39,6 @@ clean:
 	touch $(REBUILDABLES)
 	rm $(REBUILDABLES)
 	echo done cleaning
-	
+
+run:
+	./$(LINK_TARGET) -e /home/vfsilva/estudo/repositories/Projeto2/src/entrada -o /home/vfsilva/estudo/repositories/Projeto2/src/saidas -f 01-int-05.geo -q 01-int-05/007-muitas-bomb.qry

@@ -1,0 +1,460 @@
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Texto:
+X: 55.000000
+Y: 47.500000
+Ancora: m
+Corb: black
+Corp: black
+
+Texto: {+]
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.240766
+Y: 156.241064
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 54.206116
+Y: 157.440962
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.288239
+Y: 157.204721
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.369319
+Y: 157.245523
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 55.739815
+Y: 157.527331
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+

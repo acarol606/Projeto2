@@ -21,6 +21,8 @@ char* getCorb(Figura fig);  // retorna a cor da borda da figura
 char* getCorp(Figura fig);  // retorna a cor do preenchimento da figura 
 char* getText(Figura fig);  // retorna o texto 
 char* getAncora(Figura Fig);// retorna a âncora do texto
+double getcomprimentolinha(Figura Fig); // retorna o comprimento da linha
+float getTextSize(Figura Fig); // retorna o tamanho do texto
 
 Ponto criaPonto(double x, double y);    // cria um ponto com as coordenadas x,y passadas, retorna um void* Ponto
 float getXponto(Ponto pnt); // retorna o X do ponto
@@ -36,8 +38,7 @@ void changeW(Figura fig, double novoW);     // altera o valor da largura do ret�
 void changeH(Figura fig, double novoH);     // altera o valor da altura do retângulo
 void changeBorda(Figura fig, char novaBorda[]); // altera a cor da borda da figura
 void changePreench(Figura fig, char novoPreench[]); // altera a cor do preenchimento da figura
-void changeProtecao (Figura Fig,float reducao);
-double getcomprimentolinha(Figura Fig);
+void changeProtecao (Figura Fig,float reducao); // altera a proteção da figura
 void limpaFigura(Figura Fig);
 
 #endif 

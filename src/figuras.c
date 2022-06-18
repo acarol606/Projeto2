@@ -175,6 +175,7 @@ char* getAncora(Figura Fig) {
     figura* fig = (figura*) Fig;
     return(fig->ancora);
 }
+
 double getcomprimentolinha(Figura Fig){
     figura* fig = (figura*) Fig;
     
@@ -190,7 +191,6 @@ double getcomprimentolinha(Figura Fig){
         return (pow(fig->x2-fig->x1,2)+pow(fig->y2-fig->y1,2));
     }
 }
-
 
 void changeX(Figura Fig, double novoX) {
 
@@ -227,6 +227,7 @@ void changeY2(Figura Fig, double novoY2) {
     figura* fig = (figura*) Fig;
     fig->y2 = novoY2;
 }
+
 void changeProtecao (Figura Fig,float reducao){
     figura* fig = (figura*) Fig;
     fig->protecao=(fig->protecao-reducao);
@@ -250,6 +251,11 @@ void changeBorda(Figura Fig, char novaBorda[]) {
     strcpy(fig->corb, novaBorda);
 }
 
+float getTextSize(Figura Fig) {
+    figura* fig = (figura*) Fig;
+    return strlen(fig->txto);
+}
+
 void changePreench(Figura Fig, char novoPreench[]) {
 
     figura* fig = (figura*) Fig;
@@ -257,7 +263,6 @@ void changePreench(Figura Fig, char novoPreench[]) {
 }
 //void liberaFigura
 //free
-
 void limpaFigura(Figura Fig) {
 
     figura* fig = (figura*) Fig;
