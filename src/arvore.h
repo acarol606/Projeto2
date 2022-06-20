@@ -17,7 +17,7 @@ int tamanho(Node N);
 Item buscar(Node N, Item info); // a chave vai ser as coordenadas x, y, que são float
 //int buscar(No *raiz, int chave);
 
-Node remover(Node N, Item info);
+Node removeArv(Node N, Item info);
 Node getRaiz(Tree T);
 Item getItem(Node N);
 Node getEsquerda(Node N);

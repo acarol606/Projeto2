@@ -110,7 +110,7 @@ Item buscar(Node N, Item info) {
 /*  faz a impressão da árvore em ordem crescente
     esquerda - raiz - direita
 */
-void imprimir(Node N) {
+/* void imprimir(Node N) {
     No* raiz = (No*) N;
     if(raiz != NULL) {
         imprimir(raiz->esquerda);
@@ -118,9 +118,9 @@ void imprimir(Node N) {
         imprimir(raiz->direita);
         printf("%s\n", getID(raiz->conteudo));
     }
-}
+} */
 
-/* 
+
 void percorreArvore(Node N) {
 
     No* raiz = (No*) N;
@@ -130,10 +130,10 @@ void percorreArvore(Node N) {
         percorreArvore(raiz->direita);
     }
 }
- */
+
 
 // função para a remoção de um nó
-Node remover(Node N, Item info) {
+/* Node removeNo(Node N, Item info) {
     No* raiz = (No*) N;
     // 3 casos de remoção:
     // 1º : quando o nó que desejo remover é folha (não possui filhos);
@@ -167,15 +167,65 @@ Node remover(Node N, Item info) {
                         aux = aux->direita;
                     raiz->conteudo = aux->conteudo;
                     aux->conteudo = info;
-                    raiz->esquerda = remover(raiz->esquerda, info);
+                    raiz->esquerda = removeNo(raiz->esquerda, info);
                     return raiz;
                 }
             }
         } else {
             if(info < raiz->conteudo)
-                raiz->esquerda = remover(raiz->esquerda, info);
+                raiz->esquerda = removeNo(raiz->esquerda, info);
             else
-                raiz->direita = remover(raiz->direita, info);
+                raiz->direita = removeNo(raiz->direita, info);
+            return raiz;
+        }
+    }
+
+} */
+/*
+        função para remover nós da Árvore binária
+*/
+Node* removerArv(Node *N, Item info) {
+    No* raiz = (No*) N;
+    if(raiz == NULL){
+        //printf("Valor nao encontrado!\n");
+        return NULL;
+    } else { // procura o nó a remover
+        if(raiz->conteudo== info) {
+            // remove nós folhas (nós sem filhos)
+            if(raiz->esquerda == NULL && raiz->direita == NULL) {
+                free(raiz);
+                //printf("Elemento folha removido: %d !\n", info);
+                return NULL;
+            }
+            else{
+                // remover nós que possuem 2 filhos
+                if(raiz->esquerda != NULL && raiz->direita != NULL){
+                    No *aux = raiz->esquerda;
+                    while(aux->direita != NULL)
+                        aux = aux->direita;
+                    raiz->conteudo = aux->conteudo;
+                    aux->conteudo = info;
+                    //printf("Elemento trocado: %d !\n", info);
+                    remover(info);
+                    return raiz;
+                }
+                else{
+                    // remover nós que possuem apenas 1 filho
+                    No *aux;
+                    if(raiz->esquerda != NULL)
+                        aux = raiz->esquerda;
+                    else
+                        aux = raiz->direita;
+                    free(raiz);
+                    //printf("Elemento com 1 filho removido: %d !\n", info);
+                    return aux;
+                }
+            }
+        } else {
+            if(info< raiz->conteudo)
+                remover(info);
+            else
+                remover(info);
             return raiz;
         }
     }

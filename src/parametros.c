@@ -26,8 +26,7 @@ void diretorios(char* diretorio, char* arquivoGeo, char* arqCompleto) { //tratam
 
 void concatenarSvg(char* dirSvg, char* arqQry, int leuQry) {
 
-    //saidas/esquadra-alet-25-001.qry
-    if (leuQry == 1) {
+    if (leuQry == 0) {          // significa que não tem qry
         strtok(dirSvg, ".");
         strcat(dirSvg, ".svg");
     } else {
@@ -41,7 +40,7 @@ void concatenarSvg(char* dirSvg, char* arqQry, int leuQry) {
 }
 
 void concatenarTxt(char* dirTxt, char* dirSvg) {
-    printf("Entrou concatenarTxt\n");
+    //printf("Entrou concatenarTxt\n");
     strcat(dirTxt, dirSvg);
     strtok(dirTxt, ".");
     strcat(dirTxt, ".txt");

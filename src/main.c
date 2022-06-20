@@ -12,11 +12,11 @@ int main (int argc, char* argv[]) {
     char* dirSaida = NULL;
     int leuQry = 0;
 
-    printf("iniciando o for\n");
+    //printf("iniciando o for\n");
     int i;
     for(i=0; i<argc; i++) {
-        printf("i = %d ", i);
-        printf("%s\n", argv[i]);
+        /* printf("i = %d ", i);
+        printf("%s\n", argv[i]) */;
     }
 
     i=0;
@@ -46,9 +46,9 @@ int main (int argc, char* argv[]) {
         } 
         i++;
     }
-
+    //printf("leuQry: %d\n", leuQry);
     operacoes(dirEntrada, arqGeo, arqQry, dirSaida, leuQry);
-    printf("fim da main\n");
+    //printf("fim da main\n");
 
     return 0;
 }

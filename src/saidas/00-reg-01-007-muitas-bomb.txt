@@ -6,7 +6,7 @@ Corb: black
 Corp: black
 Valor: {+]
 
-Retangulo:
+Retangulo REMOVIDA:
 X: 158.086017
 Y: 32.422626
 Widh: 10.000000
@@ -14,14 +14,7 @@ Height: 5.000000
 Corb: gray
 Corp: #FFCC00
 
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
-Circulo:
+Circulo REMOVIDA:
 X: 54.043385
 Y: 139.775212
 Raio: 2.500000
@@ -42,7 +35,7 @@ X2: 245.877943
 Y2: 117.451527
 Cor: #000080
 
-Retangulo:
+Retangulo REMOVIDA:
 X: 107.090097
 Y: 173.788858
 Widh: 15.000000
@@ -58,28 +51,6 @@ Corb: black
 Corp: black
 Valor: {+]
 
-Retangulo:
-X: 158.086017
-Y: 32.422626
-Widh: 10.000000
-Height: 5.000000
-Corb: gray
-Corp: #FFCC00
-
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
 Linha:
 X1: 217.596477
 Y1: 107.443596
@@ -93,14 +64,6 @@ Y1: 107.443596
 X2: 245.877943
 Y2: 117.451527
 Cor: #000080
-
-Retangulo:
-X: 107.090097
-Y: 173.788858
-Widh: 15.000000
-Height: 10.000000
-Corb: gray
-Corp: #8800AA
 
 Texto:
 X: 18.644942
@@ -110,28 +73,6 @@ Corb: black
 Corp: black
 Valor: {+]
 
-Retangulo:
-X: 158.086017
-Y: 32.422626
-Widh: 10.000000
-Height: 5.000000
-Corb: gray
-Corp: #FFCC00
-
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
 Linha:
 X1: 217.596477
 Y1: 107.443596
@@ -145,14 +86,6 @@ Y1: 107.443596
 X2: 245.877943
 Y2: 117.451527
 Cor: #000080
-
-Retangulo:
-X: 107.090097
-Y: 173.788858
-Widh: 15.000000
-Height: 10.000000
-Corb: gray
-Corp: #8800AA
 
 Texto:
 X: 18.644942
@@ -162,28 +95,6 @@ Corb: black
 Corp: black
 Valor: {+]
 
-Retangulo:
-X: 158.086017
-Y: 32.422626
-Widh: 10.000000
-Height: 5.000000
-Corb: gray
-Corp: #FFCC00
-
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
-Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
 Linha:
 X1: 217.596477
 Y1: 107.443596
@@ -197,12 +108,4 @@ Y1: 107.443596
 X2: 245.877943
 Y2: 117.451527
 Cor: #000080
-
-Retangulo:
-X: 107.090097
-Y: 173.788858
-Widh: 15.000000
-Height: 10.000000
-Corb: gray
-Corp: #8800AA
 

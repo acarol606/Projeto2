@@ -47,7 +47,7 @@ float getYponto(Ponto Pnt) {
 Figura criarFig(char tipo[], char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
 
     figura* fig = (figura*)malloc(sizeof(figura));
-    printf("Tipo figura: |%s|\n", tipo);
+    //printf("Tipo figura: |%s|\n", tipo);
 
     if (strcmp(tipo, "c") == 0) {
         fig->protecao = 60;
@@ -282,7 +282,8 @@ void changePreench(Figura Fig, char novoPreench[]) {
 }
 //void liberaFigura
 //free
-void limpaFigura(Figura Fig) {
+
+void remover(Figura Fig) {
 
     figura* fig = (figura*)Fig;
 
