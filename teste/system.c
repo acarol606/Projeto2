@@ -14,7 +14,6 @@ void operacoes(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int
     // criar árvore
     Tree arvore = criaArvore();
     geoPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry, arvore);
-    printf("leuQry = %d\n");
     qryPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry, arvore);
 
 }
@@ -59,7 +58,6 @@ void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
 
 void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int leuQry, Tree arvore) {
 
-    printf("leuQry = %d\n");
     if (leuQry != 0) {
 
         // tratamento do diretorio de entrada qry

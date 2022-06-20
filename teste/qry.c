@@ -163,12 +163,13 @@ void funcaoTR(Node no, FILE* svg, FILE* arqTxt, float x, float y, float dx, floa
 
 void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float h, float agress) {
 
-    // printf("entrou BE\n");
+    printf("entrou BE\n");
+
     Item item;
     int verificador;
     float red;
     float pi = 3.14;
-    float raio;
+    int raio;
 
     if (no == NULL) {
         return;
@@ -176,128 +177,99 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
 
     item = getItem(no);
 
-    if (strcmp(getTipo(item), "r") == 0 && getProtecao(item) > 0) {
+    if (strcmp(getTipo(item), "r") == 0) {
         verificador = insideIrradiation(x, y, w, h, 'r', item);
         if (verificador == 0) {
             
-            red = (agress * (getW(item) * getH(item)) / (w * h));
-           
-            printf("getW = %f getH = %f w = %f h = %f\n", getW(item), getH(item), w, h);
-             printf("Agressão: %f\n", agress);
-             
+            red = (agress * (w * h) / (x * y));
             changeProtecao(item, red);
-
             svgAnchor(svg, getX(item), getY(item));
 
-            if (getProtecao(item) <= 0) {
-                fprintf(arqTxt, "Retangulo REMOVIDA:\n");
-                fprintf(arqTxt, "X: %lf\n", getX(item));
-                fprintf(arqTxt, "Y: %lf\n", getY(item));
-                fprintf(arqTxt, "Widh: %lf\n", getW(item));
-                fprintf(arqTxt, "Height: %lf\n", getH(item));
-                fprintf(arqTxt, "Corb: %s\n", getCorb(item));
-                fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
+            if (red == 0) {
                 limpaFigura(item);
+                fprintf(arqTxt, "Retangulo REMOVIDA:\n");
             } else {
                 fprintf(arqTxt, "Retangulo:\n");
-                fprintf(arqTxt, "X: %lf\n", getX(item));
-                fprintf(arqTxt, "Y: %lf\n", getY(item));
-                fprintf(arqTxt, "Widh: %lf\n", getW(item));
-                fprintf(arqTxt, "Height: %lf\n", getH(item));
-                fprintf(arqTxt, "Corb: %s\n", getCorb(item));
-                fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
             }
+
+            fprintf(arqTxt, "X: %lf\n", getX(item));
+            fprintf(arqTxt, "Y: %lf\n", getY(item));
+            fprintf(arqTxt, "Widh: %lf\n", getW(item));
+            fprintf(arqTxt, "Height: %lf\n", getH(item));
+            fprintf(arqTxt, "Corb: %s\n", getCorb(item));
+            fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
         }
     }
-    else if (strcmp(getTipo(item), "c") == 0 && getProtecao(item) > 0) {
+    else if (strcmp(getTipo(item), "c") == 0) {
         verificador = insideIrradiation(x, y, w, h, 'c', item);
         if (verificador == 0) {
 
             raio = getR(item);
-            red = ((agress * (raio * raio * pi)) / (w * h));
+            red = ((agress * ((raio * raio * pi) / 2)) / (x * y));
             changeProtecao(item, red);
-
             svgAnchor(svg, getX(item), getY(item));
 
-            if (getProtecao(item) <= 0) {
-                fprintf(arqTxt, "Circulo REMOVIDA:\n");
-                fprintf(arqTxt, "X: %lf\n", getX(item));
-                fprintf(arqTxt, "Y: %lf\n", getY(item));
-                fprintf(arqTxt, "Raio: %lf\n", getR(item));
-                fprintf(arqTxt, "Corb: %s\n", getCorb(item));
-                fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
+            if (red == 0) {
                 limpaFigura(item);
+                fprintf(arqTxt, "Circulo REMOVIDA:\n");
             } else {
                 fprintf(arqTxt, "Circulo:\n");
-                fprintf(arqTxt, "X: %lf\n", getX(item));
-                fprintf(arqTxt, "Y: %lf\n", getY(item));
-                fprintf(arqTxt, "Raio: %lf\n", getR(item));
-                fprintf(arqTxt, "Corb: %s\n", getCorb(item));
-                fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
             }
 
+            fprintf(arqTxt, "X: %lf\n", getX(item));
+            fprintf(arqTxt, "Y: %lf\n", getY(item));
+            fprintf(arqTxt, "Raio: %lf\n", getR(item));
+            fprintf(arqTxt, "Corb: %s\n", getCorb(item));
+            fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
         }
     }
-    else if (strcmp(getTipo(item), "l") == 0 && getProtecao(item) > 0) {
+    else if (strcmp(getTipo(item), "l") == 0) {
         verificador = insideIrradiation(x, y, w, h, 'l', item);
         if (verificador == 0) {
-            red = ((agress * (0.1 * getcomprimentolinha(item))) / (w * h));
+            red = ((agress * (0.1 * getcomprimentolinha(item))) / (x * y));
             changeProtecao(item, red);
-
-            svgAnchor(svg, getX1(item), getY1(item));
-
-            if (getProtecao(item) <= 0) {
-                fprintf(arqTxt, "Linha REMOVIDA:\n");
-                fprintf(arqTxt, "X1: %lf\n", getX1(item));
-                fprintf(arqTxt, "Y1: %lf\n", getY1(item));
-                fprintf(arqTxt, "X2: %lf\n", getX2(item));
-                fprintf(arqTxt, "Y2: %lf\n", getY2(item));
-                fprintf(arqTxt, "Cor: %s\n\n", getCorp(item));
+            svgAnchor(svg, getX(item), getY(item));
+            if (red == 0) {
                 limpaFigura(item);
+                fprintf(arqTxt, "Linha REMOVIDA:\n");
             } else {
                 fprintf(arqTxt, "Linha:\n");
-                fprintf(arqTxt, "X1: %lf\n", getX1(item));
-                fprintf(arqTxt, "Y1: %lf\n", getY1(item));
-                fprintf(arqTxt, "X2: %lf\n", getX2(item));
-                fprintf(arqTxt, "Y2: %lf\n", getY2(item));
-                fprintf(arqTxt, "Cor: %s\n\n", getCorp(item));
             }
 
+            fprintf(arqTxt, "X1: %lf\n", getX1(item));
+            fprintf(arqTxt, "Y1: %lf\n", getY1(item));
+            fprintf(arqTxt, "X2: %lf\n", getX2(item));
+            fprintf(arqTxt, "Y2: %lf\n", getY2(item));
+            fprintf(arqTxt, "Cor: %s\n\n", getCorp(item));
         }
     }
-    else if (strcmp(getTipo(item), "t") == 0 && getProtecao(item) > 0) {
+    else if (strcmp(getTipo(item), "t") == 0) {
         verificador = insideIrradiation(x, y, w, h, 't', item);
         if (verificador == 0) {
-            red = ((agress * 0.1) / (w * h));
+            red = ((agress * 0.1) / (x * y));
             changeProtecao(item, red);
 
-            if (strcmp(getAncora(item), "i") == 0) {
+            if (getAncora(item) == 'i') {
                 svgAnchor(svg, getX(item), getY(item));
-            } else if (strcmp(getAncora(item), "m") == 0) {
+            } else if (getAncora(item) == 'm') {
                 svgAnchor(svg, (getX(item)+(getTextSize(item)/2)), getY(item));
             } else {
                 svgAnchor(svg, (getX(item)+getTextSize(item)), getY(item));
             }
             
-            if (getProtecao(item) <= 0) {
-                fprintf(arqTxt, "Texto REMOVIDA:\n");
-                fprintf(arqTxt, "X: %lf\n", getX(item));
-                fprintf(arqTxt, "Y: %lf\n", getY(item));
-                fprintf(arqTxt, "Ancora: %s\n", getAncora(item));
-                fprintf(arqTxt, "Corb: %s\n", getCorb(item));
-                fprintf(arqTxt, "Corp: %s\n", getCorp(item));
-                fprintf(arqTxt, "Valor: %s\n\n", getText(item));
+            if (red == 0) {
                 limpaFigura(item);
+                fprintf(arqTxt, "Texto REMOVIDA:\n");
             } else {
                 fprintf(arqTxt, "Texto:\n");
-                fprintf(arqTxt, "X: %lf\n", getX(item));
-                fprintf(arqTxt, "Y: %lf\n", getY(item));
-                fprintf(arqTxt, "Ancora: %s\n", getAncora(item));
-                fprintf(arqTxt, "Corb: %s\n", getCorb(item));
-                fprintf(arqTxt, "Corp: %s\n", getCorp(item));
-                fprintf(arqTxt, "Valor: %s\n\n", getText(item));
             }
 
+            fprintf(arqTxt, "X: %lf\n", getX(item));
+            fprintf(arqTxt, "Y: %lf\n", getY(item));
+            fprintf(arqTxt, "Ancora: %s\n", getAncora(item));
+            fprintf(arqTxt, "Corb: %s\n", getCorb(item));
+            fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
+            fprintf(arqTxt, "Texto: %s\n\n", getText(item));
         }
     }
     // recursão
@@ -361,12 +333,8 @@ int insideIrradiation(float x, float y, float w, float h, char type, Item item) 
         else
             return 1;
     } else if (type == 'l') {
-        /* printf("X: %f >= X1: %f && W: %f <= X2: %f \n", x, getX1(item), w, getX2(item));
-        printf("Y: %f >= Y1: %f && H: %f <= Y2: %f \n\n", y, getY1(item), w, getY2(item));
- */        if (getX1(item) >= x && getX1(item) <= w 
-                && getY1(item) >= y && getY1(item) <= h 
-                && getX2(item) >= x && getX2(item) <= w 
-                && getY2(item) >= y && getY2(item) <= h ) {
+        if (x >= getX1(item) && w <= getX2(item)
+         && y >= getY1(item) && h <= getY2(item)) {
             return 0;
         }
         else
@@ -380,9 +348,13 @@ int insideIrradiation(float x, float y, float w, float h, char type, Item item) 
         }
     }
     else {
-        if (getX(item) >= x && getX(item) + getW(item) <= x+w
-            && getY(item) >= y && getY(item) + getH(item)<= y+h) {
-            return 0;
+        if (x >= getX(item) && w <= getW(item)) {
+            if (y >= getY(item) && h <= getH(item)) {
+                return 0; // retorna 0 se estiver dentro do retangulo
+            }
+            else {
+                return 1; // retorna 1 se estiver fora do retangulo
+            }
         }
         else
             return 1;
