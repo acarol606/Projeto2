@@ -184,7 +184,7 @@ void percorreArvore(Node N) {
 /*
         função para remover nós da Árvore binária
 */
-Node* removerArv(Node *N, Item info) {
+No* removerArv(Node *N, Item info) {
     No* raiz = (No*) N;
     if(raiz == NULL){
         //printf("Valor nao encontrado!\n");
