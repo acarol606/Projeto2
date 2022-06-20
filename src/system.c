@@ -36,10 +36,13 @@ void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
     // chamar a função de interpretar o geo
     interpretandoGeo(geoFile, arvore);
 
+    printf("dirSaida: %s\n", dirSaida);
+    printf("arqGeo: %s\n", arqGeo);
     // diretorio de saida do svg inicial (apenas do .geo, antes do .qry)
     char* diretorioSvgInicial = NULL;
     diretorioSvgInicial = calloc(strlen(dirSaida) + strlen(arqGeo) + 20, sizeof(char));
     diretorios(dirSaida, arqGeo, diretorioSvgInicial);
+    printf("aqui diretorioSVGinicial: %s\n", diretorioSvgInicial);
     concatenarSvg(diretorioSvgInicial, arqQry, leuQry);
     printf("diretorioSvgInicial: %s\n", diretorioSvgInicial);
 
@@ -66,6 +69,8 @@ void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         
         diretorios(dirEntrada, arqQry, diretorioEntradaQry);
         printf("diretorioEntradaQry: %s\n", diretorioEntradaQry);
+        strcat(diretorioEntradaQry, ".qry");
+        printf("&&&&b diretorioEntradaQry: %s\n", diretorioEntradaQry);
         // criando o arquivo qry a partir do diretorio de entrada
         FILE *qryFile;
         qryFile = fopen(diretorioEntradaQry, "r");

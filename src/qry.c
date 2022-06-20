@@ -83,7 +83,7 @@ void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y) {
         else if (strcmp(tipo, "l") == 0)
             fprintf(arqTxt, "linha, id = %s, x1 = %f, y1 = %f, x2 = %f, y2 = %f, cor = %s\n", getID(item), getX1(item), getY1(item), getX2(item), getY2(item), getCorp(item));
 
-        limpaFigura(item);
+        remover(item);
     }
     else {                    // figura fora da coordenada
         fprintf(svg, "\n\t<text x=\"%f\" y=\"%f\" fill=\"grey\">*</text>", getX(item), getY(item));
@@ -182,6 +182,8 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
             
             red = (agress * (getW(item) * getH(item)) / (w * h));
             printf("Agressão: %f\n", agress);
+            printf("redução: %f\n", red);
+            printf("getW = %f e getH = %f, w e h = %f, %f\n", getW(item), getH(item), w, h);
             changeProtecao(item, red);
 
             svgAnchor(svg, getX(item), getY(item));
@@ -194,7 +196,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Height: %lf\n", getH(item));
                 fprintf(arqTxt, "Corb: %s\n", getCorb(item));
                 fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
-                limpaFigura(item);
+                remover(item);
             } else {
                 fprintf(arqTxt, "Retangulo:\n");
                 fprintf(arqTxt, "X: %lf\n", getX(item));
@@ -211,7 +213,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
         if (verificador == 0) {
 
             raio = getR(item);
-            red = ((agress * (raio * raio * pi)) / ((w - x) * (h - y)));
+            red = (agress * (raio * raio * pi)) / (w * h);
             changeProtecao(item, red);
 
             svgAnchor(svg, getX(item), getY(item));
@@ -223,7 +225,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Raio: %lf\n", getR(item));
                 fprintf(arqTxt, "Corb: %s\n", getCorb(item));
                 fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
-                limpaFigura(item);
+                remover(item);
             } else {
                 fprintf(arqTxt, "Circulo:\n");
                 fprintf(arqTxt, "X: %lf\n", getX(item));
@@ -238,7 +240,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
     else if (strcmp(getTipo(item), "l") == 0 && getProtecao(item) > 0) {
         verificador = insideIrradiation(x, y, w, h, 'l', item);
         if (verificador == 0) {
-            red = ((agress * (0.1 * getcomprimentolinha(item))) / ((w - x) * (h - y)));
+            red = (agress * (0.1 * getcomprimentolinha(item)) / ( w * h));
             changeProtecao(item, red);
 
             svgAnchor(svg, getX1(item), getY1(item));
@@ -250,7 +252,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "X2: %lf\n", getX2(item));
                 fprintf(arqTxt, "Y2: %lf\n", getY2(item));
                 fprintf(arqTxt, "Cor: %s\n\n", getCorp(item));
-                limpaFigura(item);
+                remover(item);
             } else {
                 fprintf(arqTxt, "Linha:\n");
                 fprintf(arqTxt, "X1: %lf\n", getX1(item));
@@ -265,7 +267,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
     else if (strcmp(getTipo(item), "t") == 0 && getProtecao(item) > 0) {
         verificador = insideIrradiation(x, y, w, h, 't', item);
         if (verificador == 0) {
-            red = ((agress * 0.1) / ((w - x) * (h - y)));
+            red = (agress * 0.1) / (w * h);
             changeProtecao(item, red);
 
             if (strcmp(getAncora(item), "i") == 0) {
@@ -284,7 +286,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Corb: %s\n", getCorb(item));
                 fprintf(arqTxt, "Corp: %s\n", getCorp(item));
                 fprintf(arqTxt, "Valor: %s\n\n", getText(item));
-                limpaFigura(item);
+                remover(item);
             } else {
                 fprintf(arqTxt, "Texto:\n");
                 fprintf(arqTxt, "X: %lf\n", getX(item));

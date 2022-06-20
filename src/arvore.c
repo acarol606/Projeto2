@@ -133,7 +133,7 @@ void percorreArvore(Node N) {
  */
 
 // função para a remoção de um nó
-Node remover(Node N, Item info) {
+Node removeNo(Node N, Item info) {
     No* raiz = (No*) N;
     // 3 casos de remoção:
     // 1º : quando o nó que desejo remover é folha (não possui filhos);
@@ -167,15 +167,15 @@ Node remover(Node N, Item info) {
                         aux = aux->direita;
                     raiz->conteudo = aux->conteudo;
                     aux->conteudo = info;
-                    raiz->esquerda = remover(raiz->esquerda, info);
+                    raiz->esquerda = removeNo(raiz->esquerda, info);
                     return raiz;
                 }
             }
         } else {
             if(info < raiz->conteudo)
-                raiz->esquerda = remover(raiz->esquerda, info);
+                raiz->esquerda = removeNo(raiz->esquerda, info);
             else
-                raiz->direita = remover(raiz->direita, info);
+                raiz->direita = removeNo(raiz->direita, info);
             return raiz;
         }
     }

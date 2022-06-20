@@ -282,7 +282,7 @@ void changePreench(Figura Fig, char novoPreench[]) {
 }
 //void liberaFigura
 //free
-void limpaFigura(Figura Fig) {
+void remover(Figura Fig) {
 
     figura* fig = (figura*)Fig;
 
