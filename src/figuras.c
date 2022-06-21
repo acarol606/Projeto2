@@ -9,7 +9,7 @@ typedef struct figura {
     char tipo[2], id[40], ancora[2];
     double x, x1, x2, y, y1, y2, r, w, h;
     char corb[25], corp[25], txto[100];
-    float protecao;
+    float protecao, inativacao, destruicao;
 } figura;
 
 typedef struct pg {
@@ -47,7 +47,6 @@ float getYponto(Ponto Pnt) {
 Figura criarFig(char tipo[], char id[], double x, double x1, double x2, double y, double y1, double y2, double r, double w, double h, char borda[], char preench[], char textoGeo[], char ancora[]) {
 
     figura* fig = (figura*)malloc(sizeof(figura));
-    printf("Tipo figura: |%s|\n", tipo);
 
     if (strcmp(tipo, "c") == 0) {
         fig->protecao = 60;
@@ -245,11 +244,9 @@ void changeY2(Figura Fig, double novoY2) {
 }
 
 void changeProtecao(Figura Fig, float reducao) {
+    
     figura* fig = (figura*)Fig;
-    printf("Tipo: %s\n", fig->tipo);
-    printf("Proteção anterior: %f\n", fig->protecao);
     fig->protecao = (fig->protecao - reducao);
-    printf("Proteção deduzida: %f\n\n", fig->protecao);
 }
 
 void changeW(Figura Fig, double novoW) {
@@ -299,4 +296,31 @@ void remover(Figura Fig) {
     sprintf(fig->corp, "%s", "none");
     sprintf(fig->txto, "%s", "none");
     sprintf(fig->ancora, "%s", "none");
+}
+
+void setInativacao(Figura Fig, float valor) {
+
+    figura* fig = (figura*)Fig;
+    fig->inativacao = valor;
+
+}
+
+void setDestruicao(Figura Fig, float valor) {
+
+    figura* fig = (figura*)Fig;
+    //printf("valor recebido = %f\n", valor);
+    fig->destruicao = valor;
+
+}
+
+float getInativacao(Figura Fig) {
+
+    figura* fig = (figura*)Fig;
+    return(fig->inativacao);
+}
+
+float getDestruicao(Figura Fig) {
+
+    figura* fig = (figura*)Fig;
+    return(fig->destruicao);
 }

@@ -6,22 +6,41 @@ typedef void* Node;
 typedef void* Item;
 
 Tree criaArvore();
-//void inserirEsquerda(Node N, int valor);
-//void inserirDireita(Node N, int valor);
-//void inserir(Tree A, Item info);
+
+/* insere uma informação na árvore (seja figura ou qualquer outra ED) 
+e guarda os valores x, y passados de parâmetro, que vão servir para análise de 
+esquerda, meio ou direita da árvore */
 Node inserir(Tree T, Node N, Item info, double xFig, double yFig);
+
+/* imprime a árvore inteira  */
 void imprimir(Node N);
+
+/* retorna o tamanho da árvore, ou seja, a quantidade de nós que ela possui */
 int tamanho(Node N);
 
-// na função buscar, coloquei pra retornar o conteúdo do nó que buscamos ao invés de retornar um inteiro
-Item buscar(Node N, Item info); // a chave vai ser as coordenadas x, y, que são float
-//int buscar(No *raiz, int chave);
+/* percorre a árvore inteira até encontrar a informação passada 
+de parâmetro e retorna a informação desejada */
+Item buscar(Node N, Item info);
 
+/* remove da árvore o nó passado de parâmetro */
 Node removeNo(Node N, Item info);
+
+/* retorna o nó da raiz */
 Node getRaiz(Tree T);
+
+/* retorna a informação contida no nó passado de parâmetro */
 Item getItem(Node N);
+
+/* retorna o nó da esquerda ao nó passado de parâmetro */
 Node getEsquerda(Node N);
+
+/* retorna o nó do meio ao nó passado de parâmetro */
 Node getMeio(Node N);
+
+/* retorna o nó da direita ao nó passado de parâmetro */
 Node getDireita(Node N);
+
+/* desaloca da memória a árvore */
+void liberaArv(Tree T);
 
 #endif

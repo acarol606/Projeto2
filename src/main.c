@@ -46,7 +46,6 @@ int main (int argc, char* argv[]) {
         } 
         i++;
     }
-    printf("leuQry: %d\n", leuQry);
     operacoes(dirEntrada, arqGeo, arqQry, dirSaida, leuQry);
     printf("fim da main\n");
 

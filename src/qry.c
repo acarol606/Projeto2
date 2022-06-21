@@ -9,24 +9,23 @@
 
 void leituraQry(FILE* qryFile, Tree arv, FILE* svg, FILE* arqTxt) {
 
-    //printf("entrou na leitursQry\n");
     char comando[500], id[10];
-    float x, y, dx, dy, w, h, agress;
+    float x, y, dx, dy, w, h, agress, scoreInat=0, scoreDest=0;
+    int qtdAtaques=0;
 
     while (fscanf(qryFile, "%s", comando) != EOF) {
 
         if (!strcmp(comando, "na")) {
 
             fscanf(qryFile, "%f ", &agress);
-            printf("agress: %f\n", agress);
 
-
-            //funcaoNA(arv, svg, arqTxt, v);
         }
         else if (!strcmp(comando, "tp")) {
 
             fscanf(qryFile, "%f %f", &x, &y);
-            funcaoTP(getRaiz(arv), svg, arqTxt, x, y);
+            funcaoTP(getRaiz(arv), svg, arqTxt, x, y, &scoreDest);
+            qtdAtaques++;
+
         }
         else if (!strcmp(comando, "tr")) {
 
@@ -37,12 +36,20 @@ void leituraQry(FILE* qryFile, Tree arv, FILE* svg, FILE* arqTxt) {
 
             fscanf(qryFile, "%f %f %f %f", &x, &y, &w, &h);
             svgRectArea(svg, x, y, w, h);
-            funcaoBE(getRaiz(arv), svg, arqTxt, x, y, w, h, agress);
+            funcaoBE(getRaiz(arv), svg, arqTxt, x, y, w, h, agress, &scoreInat);
+            qtdAtaques++;
         }
+        strcpy(comando, " ");
     }
+    fprintf(arqTxt, "\n========== RESULTADOS FINAIS ==========\n");
+    fprintf(arqTxt, "- Pontos de destruição: %f\n", scoreDest);
+    fprintf(arqTxt, "- Pontos de inativação: %f\n", scoreInat);
+    fprintf(arqTxt, "- Pontuação total: %f\n", scoreDest+scoreInat);
+    fprintf(arqTxt, "- Proporção entre pontos obtidos e número de agressões: %f\n", (scoreDest+scoreInat)/qtdAtaques);
+
 }
 
-void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y) {
+void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y, float* scoreDest) {
 
     //printf("entrou TP\n");
     Item item;
@@ -83,6 +90,7 @@ void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y) {
         else if (strcmp(tipo, "l") == 0)
             fprintf(arqTxt, "linha, id = %s, x1 = %f, y1 = %f, x2 = %f, y2 = %f, cor = %s\n", getID(item), getX1(item), getY1(item), getX2(item), getY2(item), getCorp(item));
 
+        *scoreDest = *scoreDest + getDestruicao(item);
         remover(item);
     }
     else {                    // figura fora da coordenada
@@ -91,9 +99,9 @@ void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y) {
     }
 
     // recursão
-    funcaoTP(getEsquerda(no), svg, arqTxt, x, y);
-    funcaoTP(getMeio(no), svg, arqTxt, x, y);
-    funcaoTP(getDireita(no), svg, arqTxt, x, y);
+    funcaoTP(getEsquerda(no), svg, arqTxt, x, y, scoreDest);
+    funcaoTP(getMeio(no), svg, arqTxt, x, y, scoreDest);
+    funcaoTP(getDireita(no), svg, arqTxt, x, y, scoreDest);
 
 }
 
@@ -161,9 +169,8 @@ void funcaoTR(Node no, FILE* svg, FILE* arqTxt, float x, float y, float dx, floa
 
 }
 
-void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float h, float agress) {
+void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float h, float agress, float* scoreInat) {
 
-    // printf("entrou BE\n");
     Item item;
     int verificador;
     float red;
@@ -181,9 +188,6 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
         if (verificador == 0) {
             
             red = (agress * (getW(item) * getH(item)) / (w * h));
-            printf("Agressão: %f\n", agress);
-            printf("redução: %f\n", red);
-            printf("getW = %f e getH = %f, w e h = %f, %f\n", getW(item), getH(item), w, h);
             changeProtecao(item, red);
 
             svgAnchor(svg, getX(item), getY(item));
@@ -196,6 +200,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Height: %lf\n", getH(item));
                 fprintf(arqTxt, "Corb: %s\n", getCorb(item));
                 fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
+                *scoreInat = *scoreInat + getInativacao(item);
                 remover(item);
             } else {
                 fprintf(arqTxt, "Retangulo:\n");
@@ -225,6 +230,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Raio: %lf\n", getR(item));
                 fprintf(arqTxt, "Corb: %s\n", getCorb(item));
                 fprintf(arqTxt, "Corp: %s\n\n", getCorp(item));
+                *scoreInat = *scoreInat + getInativacao(item);
                 remover(item);
             } else {
                 fprintf(arqTxt, "Circulo:\n");
@@ -252,6 +258,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "X2: %lf\n", getX2(item));
                 fprintf(arqTxt, "Y2: %lf\n", getY2(item));
                 fprintf(arqTxt, "Cor: %s\n\n", getCorp(item));
+                *scoreInat = *scoreInat + getInativacao(item);
                 remover(item);
             } else {
                 fprintf(arqTxt, "Linha:\n");
@@ -286,6 +293,7 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Corb: %s\n", getCorb(item));
                 fprintf(arqTxt, "Corp: %s\n", getCorp(item));
                 fprintf(arqTxt, "Valor: %s\n\n", getText(item));
+                *scoreInat = *scoreInat + getInativacao(item);
                 remover(item);
             } else {
                 fprintf(arqTxt, "Texto:\n");
@@ -296,13 +304,14 @@ void funcaoBE(Node no, FILE* svg, FILE* arqTxt, float x, float y, float w, float
                 fprintf(arqTxt, "Corp: %s\n", getCorp(item));
                 fprintf(arqTxt, "Valor: %s\n\n", getText(item));
             }
-
         }
     }
+
     // recursão
-    funcaoBE(getEsquerda(no), svg, arqTxt, x, y, w, h, agress);
-    funcaoBE(getMeio(no), svg, arqTxt, x, y, w, h, agress);
-    funcaoBE(getDireita(no), svg, arqTxt, x, y, w, h, agress);
+    funcaoBE(getEsquerda(no), svg, arqTxt, x, y, w, h, agress, scoreInat);
+    funcaoBE(getMeio(no), svg, arqTxt, x, y, w, h, agress, scoreInat);
+    funcaoBE(getDireita(no), svg, arqTxt, x, y, w, h, agress, scoreInat);
+
 
 }
 

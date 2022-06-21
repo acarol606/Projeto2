@@ -120,18 +120,6 @@ void imprimir(Node N) {
     }
 }
 
-/* 
-void percorreArvore(Node N) {
-
-    No* raiz = (No*) N;
-    if (raiz != NULL) {
-        percorreArvore(raiz->esquerda);
-        percorreArvore(raiz->meio);
-        percorreArvore(raiz->direita);
-    }
-}
- */
-
 // função para a remoção de um nó
 Node removeNo(Node N, Item info) {
     No* raiz = (No*) N;
@@ -181,59 +169,7 @@ Node removeNo(Node N, Item info) {
     }
 }
 
-/* 
-// procedimento para inserir um elemento na subárvore esquerda
-void inserirEsquerda(Node N, int valor) {
-    No* no = (No*) N;
-    if(no->esquerda == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        no->esquerda = novo;
-    } else {
-        if(valor < no->esquerda->conteudo)
-            inserirEsquerda(no->esquerda, valor);
-        if(valor > no->esquerda->conteudo)
-            inserirDireita(no->esquerda, valor);
-    }
+void liberaArv(Tree T) {
+    arvT* tree = (arvT*) T;
+    free(tree);
 }
-
-// procedimento para inserir um elemento na subárvore direita
-void inserirDireita(Node N, int valor) {
-    No* no = (No*) N;
-    if(no->direita == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = valor;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        no->direita = novo;
-    } else {
-        if(valor > no->direita->conteudo)
-            inserirDireita(no->direita, valor);
-        if(valor < no->direita->conteudo)
-            inserirEsquerda(no->direita, valor);
-    }
-}
-
-
-    Procedimento para inserir um elemento na árvore
-    faz uso dos dois procedimentos anteriores,
-    inserindo à esquerda ou à direita
-
-void inserir(Tree A, Item info) {
-    Tree* arv = (Tree*) A;
-    if(arv->raiz == NULL) {
-        No *novo = (No*)malloc(sizeof(No));
-        novo->conteudo = info;
-        novo->esquerda = NULL;
-        novo->direita = NULL;
-        arv->raiz = novo;
-    } else {
-        if(info < arv->raiz->conteudo)
-            inserirEsquerda(arv->raiz, info);
-        if(info > arv->raiz->conteudo)
-            inserirDireita(arv->raiz, info);
-    }
-}
- */

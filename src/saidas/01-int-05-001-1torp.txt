@@ -1,0 +1,41 @@
+texto, id = 1, x = 55.000000, y = 47.500000, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]
+AGUA
+AGUA
+texto, id = 2, x = 55.000000, y = 47.500000, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]
+texto, id = 3, x = 55.000000, y = 47.500000, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]
+texto, id = 4, x = 55.000000, y = 47.500000, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]
+texto, id = 5, x = 55.000000, y = 47.500000, ancora = m, cor preenchimento = black, cor borda = black, texto = {+]
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+AGUA
+
+========== RESULTADOS FINAIS ==========
+- Pontos de destruição: 2500.000000
+- Pontos de inativação: 0.000000
+- Pontuação total: 2500.000000
+- Proporção entre pontos obtidos e número de agressões: 2500.000000

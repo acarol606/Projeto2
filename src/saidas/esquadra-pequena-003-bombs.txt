@@ -1,71 +1,55 @@
-Texto:
-X: 18.644942
-Y: 47.905802
-Ancora: m
-Corb: black
-Corp: black
-Valor: {+]
-
 Circulo:
-X: 54.043385
-Y: 139.775212
-Raio: 2.500000
-Corb: #FF6600
-Corp: brown
-
-Retangulo:
-X: 158.086017
-Y: 32.422626
-Widh: 10.000000
-Height: 5.000000
-Corb: gray
-Corp: #FFCC00
-
-Circulo:
-X: 54.043385
-Y: 139.775212
+X: 70.000000
+Y: 170.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown
 
 Circulo:
-X: 54.043385
-Y: 139.775212
+X: 110.000000
+Y: 140.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown
 
 Circulo:
-X: 54.043385
-Y: 139.775212
+X: 70.000000
+Y: 370.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown
 
 Circulo:
-X: 54.043385
-Y: 139.775212
+X: 310.000000
+Y: 199.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown
 
 Circulo:
-X: 54.043385
-Y: 139.775212
+X: 70.000000
+Y: 170.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown
 
 Circulo:
-X: 54.043385
-Y: 139.775212
+X: 110.000000
+Y: 140.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown
 
 Circulo:
-X: 54.043385
-Y: 139.775212
+X: 70.000000
+Y: 370.000000
+Raio: 2.500000
+Corb: #FF6600
+Corp: brown
+
+Circulo:
+X: 310.000000
+Y: 199.000000
 Raio: 2.500000
 Corb: #FF6600
 Corp: brown

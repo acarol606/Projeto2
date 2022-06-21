@@ -15,6 +15,7 @@ void operacoes(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int
     Tree arvore = criaArvore();
     geoPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry, arvore);
     qryPart(dirEntrada, arqGeo, arqQry, dirSaida, leuQry, arvore);
+    liberaArv(arvore);
 
 }
 
@@ -36,14 +37,12 @@ void geoPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
     // chamar a função de interpretar o geo
     interpretandoGeo(geoFile, arvore);
 
-    printf("dirSaida: %s\n", dirSaida);
-    printf("arqGeo: %s\n", arqGeo);
     // diretorio de saida do svg inicial (apenas do .geo, antes do .qry)
     char* diretorioSvgInicial = NULL;
     diretorioSvgInicial = calloc(strlen(dirSaida) + strlen(arqGeo) + 20, sizeof(char));
     diretorios(dirSaida, arqGeo, diretorioSvgInicial);
-    printf("aqui diretorioSVGinicial: %s\n", diretorioSvgInicial);
-    concatenarSvg(diretorioSvgInicial, arqQry, leuQry);
+    strtok(diretorioSvgInicial, ".");
+    strcat(diretorioSvgInicial, ".svg");
     printf("diretorioSvgInicial: %s\n", diretorioSvgInicial);
 
     // criando o arquivo svg inicial 
@@ -69,8 +68,6 @@ void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         
         diretorios(dirEntrada, arqQry, diretorioEntradaQry);
         printf("diretorioEntradaQry: %s\n", diretorioEntradaQry);
-        strcat(diretorioEntradaQry, ".qry");
-        printf("&&&&b diretorioEntradaQry: %s\n", diretorioEntradaQry);
         // criando o arquivo qry a partir do diretorio de entrada
         FILE *qryFile;
         qryFile = fopen(diretorioEntradaQry, "r");
@@ -108,13 +105,12 @@ void qryPart(char* dirEntrada, char* arqGeo, char* arqQry, char* dirSaida, int l
         createSvg(svgFinal, arvore); // cria o svg final a partir da lista que foi alterada conforme os queries
         fprintf(svgFinal, "\n</svg>");  // fechando o arquivo svg
 
-        /*
         free(diretorioEntradaQry);
         free(diretorioSvgFinal);
         free(diretorioTxtFinal);
         fclose(qryFile);
         fclose(svgFinal);
         fclose(arqTxt);
-        */
+
     }
 }

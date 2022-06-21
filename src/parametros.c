@@ -40,11 +40,10 @@ void concatenarSvg(char* dirSvg, char* arqQry, int leuQry) {
 }
 
 void concatenarTxt(char* dirTxt, char* dirSvg) {
-    printf("Entrou concatenarTxt\n");
+
     strcat(dirTxt, dirSvg);
     strtok(dirTxt, ".");
     strcat(dirTxt, ".txt");
-
 }
 
 char* getNomeQry(char* arquivoQry) {
