@@ -202,7 +202,6 @@ else if (fig->x1 < fig->x2 && fig->y1 == fig->y2) { // mesmo y e x diferente
     }
     else {
         double result = sqrt(pow(fig->x2 - fig->x1, 2) + pow(fig->y2 - fig->y1, 2));
-        printf("Raiz quadrada: %f\n", result);
         return result;
     }
 }

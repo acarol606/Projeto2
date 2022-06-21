@@ -107,7 +107,6 @@ void funcaoTP(Node no, FILE* svg, FILE* arqTxt, float x, float y, float* scoreDe
 
 void funcaoTR(Node no, FILE* svg, FILE* arqTxt, float x, float y, float dx, float dy, char id[]) {
 
-    printf("entrou TR\n");
     Item item;
     float idFloat = atof(id);
     int verificador;

@@ -41,9 +41,9 @@ void changeBorda(Figura fig, char novaBorda[]); // altera a cor da borda da figu
 void changePreench(Figura fig, char novoPreench[]); // altera a cor do preenchimento da figura
 void changeProtecao (Figura Fig,float reducao); // altera a proteção da figura
 void remover(Figura Fig);
-void setInativacao(Figura Fig, float valor);
-void setDestruicao(Figura Fig, float valor);
-float getInativacao(Figura Fig);
-float getDestruicao(Figura Fig);
+void setInativacao(Figura Fig, float valor);    // define o valor da inativação da figura
+void setDestruicao(Figura Fig, float valor);    // define o valor da destruição da figura
+float getInativacao(Figura Fig);                // retorna o valor da inativação da figura
+float getDestruicao(Figura Fig);                // retorna o valor da destruição da figura
 
 #endif 
